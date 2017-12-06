@@ -1,0 +1,25 @@
+@import '../../../styles/colors';
+@import '../../../styles/buttons';
+@import '../../../styles/fonts';
+@import '../../../styles/container';
+@import '../../../styles/keyframes';
+
+.header {
+  background: $blue;
+  height: 60px;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 9999;
+}
+
+.image {
+  flex: 1 1 70%;
+  padding-left: 5px;
+  img{
+    height: 50px;
+    width: 100px;
+  }
+}

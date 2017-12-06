@@ -1,0 +1,205 @@
+@import "../../styles/colors";
+@import "../../styles/buttons";
+@import "../../styles/fonts";
+@import "../../styles/container";
+@import "../../styles/keyframes";
+a{
+  text-decoration: none;
+  cursor:pointer;
+  &:link {
+    color: $base;
+  }
+  &:hover{
+    text-decoration: underline;
+  }
+}
+// TagsBtn
+.tagsBtn {
+  height: 30px;
+  width: 30px;
+  @include reset-button(1.2em);
+  background: center no-repeat;
+  background-size: contain;
+  background-image: url('./../../images/tag-icon.png');
+}
+// CloseCategories
+.closeBtn {
+  align-self: flex-end;
+  height: 24px;
+  width: 24px;
+  @include reset-button(1.2em);
+  background: center no-repeat;
+  background-size: contain;
+  background-image: url('./../../images/close-icon.png');
+}
+// Service
+.serviceContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border: solid 1px $base;
+  margin-bottom: 5px;
+}
+.serviceInfo {
+  flex:1;
+  display: flex;
+  border-right: solid 1px $base;
+  padding: 0.5em;
+}
+.serviceContact{
+  flex:1;
+  height: 100%;
+  padding: 0.5em;
+}
+p.required, span.required {
+  margin: 0;
+  padding: 0;
+  color: red;
+  text-align: right;
+}
+
+.menuBtn {
+  padding: 0 5px 0 5px;
+}
+.service {
+  .description {
+    text-align: justify;
+  }
+  li {
+    padding: 0.25rem;
+    color: black;
+  }
+}
+.liFlex{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:space-around;
+}
+.serviceHeading {
+  @extend .liFlex;
+  background-color: lighten($base, 40%);
+  border-radius: 5px;
+  img {
+    width: 100px;
+    height: 50px;
+    margin: auto 0;
+  }
+  h3 {
+  color: darken($base, 10%);
+}
+}
+.contactDetails {
+  li {
+    padding: 5px;
+    color: black;
+  }
+  h3{
+    margin:0;
+    padding:0;
+    width:100%;
+    color: $base;
+    text-align: center;
+  }
+}
+.centerText{
+  text-align: center;
+}
+.toolBarBtns {
+  flex: 1 0 ;
+  min-width: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+// Back
+.backBtn {
+  height: 24px;
+  width: 24px;
+  @include reset-button(1.2em);
+  background: center no-repeat;
+  background-size: contain;
+  background-image: url('./../../images/left.png');
+}
+// Reload
+.reloadBtn {
+  height: 24px;
+  width: 24px;
+  @include reset-button(1.2em);
+  background: center no-repeat;
+  background-size: contain;
+  background-image: url('./../../images/reload.png');
+}
+// NoServices
+.noServices {
+  width:100%;
+  h2{
+    text-align: center;
+    color: $orange;
+  }
+}
+// Tags
+.outerTagsContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:flex-start;
+}
+.tagContainer {
+  margin-bottom: 5px;
+  position: relative;
+}
+svg {
+  position: absolute;
+  z-index: -1;
+}
+.tagContent {
+  position: relative;
+  word-break: break-all;
+  width: 100px;
+  padding: 5px 0 0 3px;
+  box-sizing: border-box;
+  font-size: 0.6em;
+}
+// FilterByTags
+.filterByTags {
+  align-self: flex-start;
+  margin-left: 10%;
+    span, label, input {
+      margin: 5px;
+  }
+}
+// List
+.listBtn {
+  @include reset-button(1.2em);
+  height: 24px;
+  width: 24px;
+  background: url('./../../images/list-icon.png') no-repeat center;
+  background-size: contain;
+}
+
+.subheadingsBox {
+  display: flex;
+  width: 80%;
+  justify-content:space-between;
+}
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+@media only screen
+  and (max-width: 667px)
+  and (orientation: portrait) {
+    .innerContainer {
+      width: 100%;
+    }
+    .menuContainer {
+      width:100%;
+    }
+    .formContainerServices {
+      width:100%;
+    }
+    .toolBar {
+      width:100%;
+    }
+    .filterByTags {
+      margin-left:0;
+    }
+    .subheadingsBox {
+      width: 100%;
+    }
+}

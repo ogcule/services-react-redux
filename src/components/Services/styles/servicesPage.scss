@@ -1,0 +1,23 @@
+@import '../../../styles/colors';
+@import '../../../styles/buttons';
+@import '../../../styles/fonts';
+@import '../../../styles/container';
+@import '../../../styles/keyframes';
+
+.services-box {
+  @extend %outer-box;
+}
+
+.simple-container {
+  @extend %container;
+}
+
+.search-btn{
+  background-color: red;
+  float: right;
+}
+
+.filler-div {
+  width: 100%;
+  min-height: 50px;
+}
