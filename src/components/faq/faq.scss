@@ -1,12 +1,14 @@
-@import "../../styles/colors";
-@import "../../styles/buttons";
-@import "../../styles/fonts";
-@import "../../styles/container";
-.faqBox{
+@import '../../styles/colors';
+@import '../../styles/buttons';
+@import '../../styles/fonts';
+@import '../../styles/container';
+
+.faqBox {
   @extend %outer-box;
 }
+
 .transparent-bg {
-  @extend %transparent-bg;
+  @include transparent-bg(60px);
 }
 .faqBtnContainer {
   width: 80%;

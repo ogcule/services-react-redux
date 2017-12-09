@@ -5,8 +5,10 @@
 @import '../../../styles/keyframes';
 
 .transparent-bg{
-  @extend %transparent-bg;
+  @include transparent-bg(90px);
   position: fixed;
+  margin: 0;
+  left: 0;
 }
 
 .menu-container {
@@ -21,5 +23,5 @@
 .container {
   width: 100%;
   height: auto;
-  padding: -45px;
+  padding-top: 30px;
 }

@@ -9,14 +9,18 @@
   padding: 10px;
   display:flex;
   position: relative;
-  form {
-  flex:1;
-  }
+  height: 50px;
+  width: 280px;
+    form {
+    flex: 1;
+    }
 }
 
 .filter-by-tags {
-    span, label, input {
-      margin: 0;
+  span,
+  label,
+  input {
+    margin: 0;
   }
 }
 @keyframes growLeft {

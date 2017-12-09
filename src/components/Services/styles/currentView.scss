@@ -5,15 +5,17 @@
 @import '../../../styles/keyframes';
 
 .outer-container {
-  background-color: white;
+  background-color: $white;
   display: flex;
-  flex-flow: row wrap;
   flex: 1 0 auto;
-  padding: 5px;
+  flex-flow: row wrap;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  position: fixed;
   width: 100%;
-  height: 40px;
-  margin-bottom: 5px;
 }
+
 .cat-btn {
   @include reset-button(1.2em);
   color: $blue;

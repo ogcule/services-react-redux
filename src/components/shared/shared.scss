@@ -1,19 +1,7 @@
 @import "../../styles/colors";
 @import "../../styles/fonts";
 @import "../../styles/buttons";
-.addBtn{
-  flex: 4;
-  padding-right: 5px;
-    button{
-      float: right;
-    @include reset-button(1.5em);
-    height: 24px;
-    width: 24px;
-    background: center no-repeat;
-    background-size: contain;
-    background-image: url('./../../images/post.png');
-  }
-}
+
 .closebtn {
   flex: 0 1 auto;
   display: flex;

@@ -1,0 +1,22 @@
+@import '../../../styles/colors';
+@import '../../../styles/buttons';
+@import '../../../styles/fonts';
+@import '../../../styles/container';
+@import '../../../styles/keyframes';
+
+.add-btn {
+  flex: 4;
+  padding-right: 5px;
+  text-align: right;
+
+  button {
+    @include reset-button(1.5em);
+    background: center no-repeat;
+    background-image: url('./../../../images/post.png');
+    background-size: contain;
+    float: right;
+    height: 24px;
+    margin: 0 5px;
+    width: 24px;
+  }
+}

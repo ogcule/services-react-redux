@@ -19,9 +19,9 @@
   margin-top: 1em;
   padding: 0 1em 1em 1em;
 }
-%transparent-bg{
+@mixin transparent-bg ($top, $bg:rgba(0, 0, 0, 0.3)){
   position: absolute;
-  top: 100px; // so does not cover the header and breadcrumbs
+  top: $top;
   left: 0px;
   width: 100%;
   height: 100%;

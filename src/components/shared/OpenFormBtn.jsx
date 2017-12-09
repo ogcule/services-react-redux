@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './shared.scss';
+import styles from './styles/openFormBtn.scss';
 
 const OpenFormBtn = props => (
-  <div className={styles.addBtn}>
+  <div className={styles['add-btn']}>
+    Add service
     <button onClick={props.openForm} />
   </div>
 );

@@ -11,18 +11,20 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  align-items:center;
+  align-items: center;
 }
 
 .search-box {
+  box-shadow: 5px 5px 5px #888888;
+  border-radius: 5px;
   display: flex;
-  height: 30px;
+  height: 35px;
   button {
     flex: 2;
     @include reset-button(1.2em);
     border: 2px solid $base;
     padding:5px;
-    height: 26px;
+    height: 35px;
     min-width: 30px;
     background: $base url('./../../../images/search-white.png') no-repeat center;
     background-size: 15px;
@@ -33,7 +35,7 @@
     font-size: 1em;
     flex:8;
     margin-right:0;
-    height: 26px;
+    height: 35px;
     border-radius: 5px 0 0 5px;
     padding: 5px;
     border: 2px solid $base;
