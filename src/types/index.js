@@ -128,4 +128,21 @@ const handleClearAllType = shape({
   loaded: bool,
 });
 
-export { allServicesType, serviceInfoType, filterType, handleClearAllType };
+const errorMsgType = shape({
+  name: string,
+  description: string,
+  telephone: string,
+  postcode: string,
+  email: string,
+  weblink: string,
+  image: string,
+  tags: string,
+});
+
+export {
+  allServicesType,
+  serviceInfoType,
+  filterType,
+  handleClearAllType,
+  errorMsgType,
+};

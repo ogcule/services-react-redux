@@ -1,9 +1,9 @@
 import React from 'react';
-import { func, bool, objectOf, string } from 'prop-types';
+import { connect } from 'react-redux';
+import { func, bool, node } from 'prop-types';
 import styles from './styles/servicesPage.scss';
 import Subtitle from './../shared/Subtitle';
 import OpenFormBtn from './../shared/OpenFormBtn';
-import ServiceForm from './ServiceForm';
 import FilteredView from './FilteredView';
 import FilterByTags from './FilterByTags';
 import CurrentView from './CurrentView';
@@ -16,9 +16,9 @@ import Search from './Search';
 import Categories from './Categories';
 // import TagsBtn from './TagsBtn';
 // import images from './../../utils/images';
-import { serviceInfoType, filterType } from './../../types/index';
+import { filterType } from './../../types/index';
 
-const ServicesPage = props => (
+const ServicesPage = ({ formOpen, ...props }) => (
   <div className={styles['simple-container']}>
     <CurrentView
       filter={props.filter}
@@ -46,30 +46,17 @@ const ServicesPage = props => (
           filter={props.filter}
           handleInputChange={props.handleInputChange}
         />
-        <OpenFormBtn text="" openForm={props.handleFormChange} />
+        <OpenFormBtn text="" />
       </MenuOverlay>
-      {console.log(
-        'filter',
-         props.filter.filteredView,
-        'SearchBox',
-         props.searchBox,
-       )}
-      {(!props.filter.filteredView && props.searchBox) &&
+      {(!props.filter.filteredView && props.searchBox && !formOpen) &&
       <Search
         filter={props.filter}
         handleInputChange={props.handleInputChange}
         handleSearchClick={props.handleSearchClick}
       />}
-      {props.expanded && <ServiceForm
-        closeForm={props.handleFormChange}
-        handleInputChange={props.handleInputChange}
-        handleSubmit={props.handleSubmit}
-        values={props.values}
-        errorMsg={props.errorMsg}
-        errorSubmit={props.errorSubmit}
-        message={props.message}
-      />}
-      {(props.filter.filteredView && !props.searchBox) &&
+      {console.log('service form', formOpen)}
+      {formOpen && props.children}
+      {(props.filter.filteredView && !props.searchBox && !formOpen) &&
         <FilteredView
           loaded={props.loaded}
           filter={props.filter}
@@ -79,24 +66,25 @@ const ServicesPage = props => (
     </div>
   </div>
 );
+
+const mapStateToProps = state => (
+  {
+    formOpen: state.formView.formOpen,
+  }
+);
+
 ServicesPage.propTypes = {
+  formOpen: bool,
+  children: node,
   loaded: bool,
-  handleFormChange: func,
   handleInputChange: func,
   handleFilterClick: func,
-  handleSubmit: func,
-  // handleClearAll: PropTypes.func,
   handleSearchClick: func,
   handleDisplayCategories: func,
   handleTagMenu: func,
   handleMenuOverlayChange: func,
   handleSearchBoxChange: func,
   handleFilterChange: func,
-  values: serviceInfoType,
-  expanded: bool,
-  message: bool,
-  errorSubmit: bool,
-  errorMsg: objectOf(string),
   filter: filterType,
   filteredView: bool,
   displayCategories: bool,
@@ -105,24 +93,17 @@ ServicesPage.propTypes = {
   searchBox: bool,
 };
 ServicesPage.defaultProps = {
+  formOpen: false,
   loaded: false,
-  // allServices: null,
-  handleFormChange: null,
+  children: null,
   handleInputChange: null,
   handleFilterClick: null,
-  // handleClearAll: null,
-  handleSubmit: null,
   handleSearchClick: null,
   handleDisplayCategories: null,
   handleTagMenu: null,
   handleMenuOverlayChange: null,
   handleSearchBoxChange: null,
   handleFilterChange: null,
-  expanded: false,
-  values: {},
-  errorMsg: {},
-  message: false,
-  errorSubmit: false,
   filter: null,
   filteredView: false,
   displayCategories: false,
@@ -130,4 +111,5 @@ ServicesPage.defaultProps = {
   menuOverlay: false,
   searchBox: false,
 };
-export default ServicesPage;
+
+export default connect(mapStateToProps)(ServicesPage);

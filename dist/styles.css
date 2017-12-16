@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);* {
+@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);@import url(https://fonts.googleapis.com/css?family=Oswald|Roboto);* {
   -webkit-box-sizing: border-box;
           box-sizing: border-box; }
 
@@ -50,10 +50,6 @@ li {
 .src-components-Services-styles-servicesPage__search-btn--2n_SX {
   background-color: red;
   float: right; }
-
-.src-components-Services-styles-servicesPage__filler-div--1grJb {
-  width: 100%;
-  min-height: 50px; }
 .src-components-shared-styles-subtitle__formBtn--1OTZp {
   padding: 0.5em 1em 0 0; }
   .src-components-shared-styles-subtitle__formBtn--1OTZp button {
@@ -65,6 +61,10 @@ li {
     border-radius: 5px;
     cursor: pointer; }
 
+h2 {
+  margin: 0;
+  padding: 0; }
+
 .src-components-shared-styles-subtitle__subtitle--PzTMt {
   font-size: 1.2em;
   font-weight: 900;
@@ -74,9 +74,9 @@ li {
 @media only screen and (max-width: 667px) and (orientation: portrait) {
   .src-components-shared-styles-subtitle__subtitle--PzTMt {
     font-size: 1em; } }
-.src-components-shared-shared__formBtn--2A6ZA {
+.src-components-shared-styles-openFormBtn__formBtn--2hmNp {
   padding: 0.5em 1em 0 0; }
-  .src-components-shared-shared__formBtn--2A6ZA button {
+  .src-components-shared-styles-openFormBtn__formBtn--2hmNp button {
     float: right;
     font-size: 1em;
     color: #ffffff;
@@ -85,13 +85,13 @@ li {
     border-radius: 5px;
     cursor: pointer; }
 
-.src-components-shared-shared__addBtn--2zl1Q {
+.src-components-shared-styles-openFormBtn__add-btn--2eku8 {
   -webkit-box-flex: 4;
       -ms-flex: 4;
           flex: 4;
-  padding-right: 5px; }
-  .src-components-shared-shared__addBtn--2zl1Q button {
-    float: right;
+  padding-right: 5px;
+  text-align: right; }
+  .src-components-shared-styles-openFormBtn__add-btn--2eku8 button {
     margin: 0;
     padding: 0;
     border: 0;
@@ -99,140 +99,13 @@ li {
     font-family: inherit;
     font-size: 1.5em;
     cursor: pointer;
-    height: 24px;
-    width: 24px;
     background: center no-repeat;
+    background-image: url(/src/images/post.png);
     background-size: contain;
-    background-image: url(/src/images/post.png); }
-
-.src-components-shared-shared__closebtn--2K-sK {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 auto;
-          flex: 0 1 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end; }
-  .src-components-shared-shared__closebtn--2K-sK button {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    font-family: inherit;
-    font-size: 1.5em;
-    cursor: pointer; }
-
-.src-components-shared-shared__notFound--3xUsY {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column nowrap;
-          flex-flow: column nowrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: red; }
-
-.src-components-shared-shared__errorText--3Ufsh {
-  color: red;
-  padding: 0;
-  margin: 0; }
-
-.src-components-shared-shared__successMsg--ElbJY {
-  padding: 5px;
-  background-color: #FFC300;
-  color: #ffffff;
-  border-radius: 5px;
-  text-align: center; }
-.src-components-Services-styles-serviceForm__formBtn--2kQNk {
-  padding: 0.5em 1em 0 0; }
-  .src-components-Services-styles-serviceForm__formBtn--2kQNk button {
     float: right;
-    font-size: 1em;
-    color: #ffffff;
-    background-color: #FF9700;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer; }
-
-.src-components-Services-styles-serviceForm__formContainerServices--18-cv {
-  min-width: 50%;
-  font-family: "Roboto", sans-serif;
-  border: #FF9700 solid 2px;
-  border-radius: 5px;
-  color: #995b00;
-  background-color: #ffd599;
-  margin-top: 1em;
-  padding: 0 1em 1em 1em; }
-
-.src-components-Services-styles-serviceForm__transparent-bg--2RElO {
-  position: absolute;
-  top: 100px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  z-index: 10000;
-  background: rgba(0, 0, 0, 0.3); }
-
-.src-components-Services-styles-serviceForm__formContainerServices--18-cv {
-  width: 80%;
-  margin: 5% auto 0 auto; }
-  .src-components-Services-styles-serviceForm__formContainerServices--18-cv form {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-flow: column nowrap;
-            flex-flow: column nowrap;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    background-color: #ffffff;
-    -webkit-box-align: end;
-        -ms-flex-align: end;
-            align-items: flex-end;
-    border-radius: 5px;
-    padding: 5px; }
-    .src-components-Services-styles-serviceForm__formContainerServices--18-cv form label {
-      width: 100%;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-pack: end;
-          -ms-flex-pack: end;
-              justify-content: flex-end;
-      margin: 0.2rem 0; }
-    .src-components-Services-styles-serviceForm__formContainerServices--18-cv form legend {
-      -ms-flex-item-align: center;
-          align-self: center;
-      text-align: center;
-      font-size: 1.4em;
-      font-weight: 600;
-      margin-bottom: 5px; }
-    .src-components-Services-styles-serviceForm__formContainerServices--18-cv form input, .src-components-Services-styles-serviceForm__formContainerServices--18-cv form textarea, .src-components-Services-styles-serviceForm__formContainerServices--18-cv form select, .src-components-Services-styles-serviceForm__formContainerServices--18-cv form label {
-      font-size: 1.0em;
-      font-family: "Roboto", sans-serif; }
-    .src-components-Services-styles-serviceForm__formContainerServices--18-cv form input, .src-components-Services-styles-serviceForm__formContainerServices--18-cv form textarea, .src-components-Services-styles-serviceForm__formContainerServices--18-cv form select {
-      width: 50%;
-      margin-left: 1rem; }
-
-ul {
-  list-style-type: none;
-  width: 100%; }
-
-span {
-  padding-right: 5px;
-  float: left;
-  color: #005cb5;
-  font-weight: 600; }
+    height: 24px;
+    margin: 0 5px;
+    width: 24px; }
 .src-components-Services-services__formBtn--2dEXb {
   padding: 0.5em 1em 0 0; }
   .src-components-Services-services__formBtn--2dEXb button {
@@ -526,13 +399,17 @@ svg {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  position: relative; }
+  position: relative;
+  height: 50px;
+  width: 280px; }
   .src-components-Services-styles-filterByTags__tags-filter-menu--wboKL form {
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1; }
 
-.src-components-Services-styles-filterByTags__filter-by-tags--1TaKi span, .src-components-Services-styles-filterByTags__filter-by-tags--1TaKi label, .src-components-Services-styles-filterByTags__filter-by-tags--1TaKi input {
+.src-components-Services-styles-filterByTags__filter-by-tags--1TaKi span,
+.src-components-Services-styles-filterByTags__filter-by-tags--1TaKi label,
+.src-components-Services-styles-filterByTags__filter-by-tags--1TaKi input {
   margin: 0; }
 
 @-webkit-keyframes src-components-Services-styles-filterByTags__growLeft--1-jCF {
@@ -580,21 +457,22 @@ svg {
     cursor: pointer; }
 
 .src-components-Services-styles-currentView__outer-container--16_60 {
-  background-color: white;
+  background-color: #ffffff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
-  padding: 5px;
-  width: 100%;
-  height: 40px;
-  margin-bottom: 5px; }
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  width: 100%; }
 
 .src-components-Services-styles-currentView__cat-btn--3Tads {
   margin: 0;
@@ -732,15 +610,15 @@ svg {
 
 .src-components-Services-styles-menuOverlay__transparent-bg--1cwzL {
   position: absolute;
-  top: 100px;
+  top: 90px;
   left: 0px;
   width: 100%;
   height: 100%;
   z-index: 10000;
-  background: rgba(0, 0, 0, 0.3); }
-
-.src-components-Services-styles-menuOverlay__transparent-bg--1cwzL {
-  position: fixed; }
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  margin: 0;
+  left: 0; }
 
 .src-components-Services-styles-menuOverlay__menu-container--3tyH5 {
   background-color: white;
@@ -755,7 +633,7 @@ svg {
 .src-components-Services-styles-menuOverlay__container--3wfve {
   width: 100%;
   height: auto;
-  padding: -45px; }
+  padding-top: 30px; }
 .src-components-Services-styles-search__formBtn--23Z9H {
   padding: 0.5em 1em 0 0; }
   .src-components-Services-styles-search__formBtn--23Z9H button {
@@ -785,10 +663,13 @@ svg {
           align-items: center; }
 
 .src-components-Services-styles-search__search-box--1RUF1 {
+  -webkit-box-shadow: 5px 5px 5px #888888;
+          box-shadow: 5px 5px 5px #888888;
+  border-radius: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 30px; }
+  height: 35px; }
   .src-components-Services-styles-search__search-box--1RUF1 button {
     -webkit-box-flex: 2;
         -ms-flex: 2;
@@ -802,7 +683,7 @@ svg {
     cursor: pointer;
     border: 2px solid #005cb5;
     padding: 5px;
-    height: 26px;
+    height: 35px;
     min-width: 30px;
     background: #005cb5 url(/src/images/search-white.png) no-repeat center;
     background-size: 15px;
@@ -814,7 +695,7 @@ svg {
         -ms-flex: 8;
             flex: 8;
     margin-right: 0;
-    height: 26px;
+    height: 35px;
     border-radius: 5px 0 0 5px;
     padding: 5px;
     border: 2px solid #005cb5; }
@@ -832,11 +713,13 @@ svg {
     cursor: pointer; }
 
 .src-components-Services-styles-categories__categories-container--3MTXu {
-  background-color: white; }
+  background-color: #ffffff;
+  height: 340px;
+  width: 300px; }
 
 .src-components-Services-styles-categories__categories--2xCr4 li {
-  text-align: center;
-  padding: 1%; }
+  padding: 1%;
+  text-align: left; }
 
 .src-components-Services-styles-categories__categories--2xCr4 button {
   margin: 0;
@@ -847,6 +730,145 @@ svg {
   font-size: 1.2em;
   cursor: pointer;
   color: #005cb5; }
+.src-components-Services-styles-serviceForm__formBtn--2kQNk {
+  padding: 0.5em 1em 0 0; }
+  .src-components-Services-styles-serviceForm__formBtn--2kQNk button {
+    float: right;
+    font-size: 1em;
+    color: #ffffff;
+    background-color: #FF9700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; }
+
+.src-components-Services-styles-serviceForm__formContainerServices--18-cv {
+  min-width: 50%;
+  font-family: "Roboto", sans-serif;
+  border: #FF9700 solid 2px;
+  border-radius: 5px;
+  color: #995b00;
+  background-color: #ffd599;
+  margin-top: 1em;
+  padding: 0 1em 1em 1em; }
+
+.src-components-Services-styles-serviceForm__transparent-bg--2RElO {
+  position: absolute;
+  top: 60px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.3); }
+
+.src-components-Services-styles-serviceForm__formContainerServices--18-cv {
+  width: 80%;
+  margin: 5% auto 0 auto; }
+  .src-components-Services-styles-serviceForm__formContainerServices--18-cv form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    background-color: #ffffff;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    border-radius: 5px;
+    padding: 5px; }
+    .src-components-Services-styles-serviceForm__formContainerServices--18-cv form label {
+      width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: end;
+          -ms-flex-pack: end;
+              justify-content: flex-end;
+      margin: 0.2rem 0; }
+    .src-components-Services-styles-serviceForm__formContainerServices--18-cv form legend {
+      -ms-flex-item-align: center;
+          align-self: center;
+      text-align: center;
+      font-size: 1.4em;
+      font-weight: 600;
+      margin-bottom: 5px; }
+    .src-components-Services-styles-serviceForm__formContainerServices--18-cv form input, .src-components-Services-styles-serviceForm__formContainerServices--18-cv form textarea, .src-components-Services-styles-serviceForm__formContainerServices--18-cv form select, .src-components-Services-styles-serviceForm__formContainerServices--18-cv form label {
+      font-size: 1.0em;
+      font-family: "Roboto", sans-serif; }
+    .src-components-Services-styles-serviceForm__formContainerServices--18-cv form input, .src-components-Services-styles-serviceForm__formContainerServices--18-cv form textarea, .src-components-Services-styles-serviceForm__formContainerServices--18-cv form select {
+      width: 50%;
+      margin-left: 1rem; }
+
+ul {
+  list-style-type: none;
+  width: 100%; }
+
+span {
+  padding-right: 5px;
+  float: left;
+  color: #005cb5;
+  font-weight: 600; }
+.src-components-shared-shared__formBtn--2A6ZA {
+  padding: 0.5em 1em 0 0; }
+  .src-components-shared-shared__formBtn--2A6ZA button {
+    float: right;
+    font-size: 1em;
+    color: #ffffff;
+    background-color: #FF9700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; }
+
+.src-components-shared-shared__closebtn--2K-sK {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end; }
+  .src-components-shared-shared__closebtn--2K-sK button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font-family: inherit;
+    font-size: 1.5em;
+    cursor: pointer; }
+
+.src-components-shared-shared__notFound--3xUsY {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: red; }
+
+.src-components-shared-shared__errorText--3Ufsh {
+  color: red;
+  padding: 0;
+  margin: 0; }
+
+.src-components-shared-shared__successMsg--ElbJY {
+  padding: 5px;
+  background-color: #FFC300;
+  color: #ffffff;
+  border-radius: 5px;
+  text-align: center; }
 .src-components-Home-home__container--3k7sQ {
   width: 100%;
   height: 100%;
@@ -989,7 +1011,7 @@ svg {
 
 .src-components-faq-faq__transparent-bg--2ytVp {
   position: absolute;
-  top: 100px;
+  top: 60px;
   left: 0px;
   width: 100%;
   height: 100%;

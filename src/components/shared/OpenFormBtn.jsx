@@ -1,12 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import styles from './styles/openFormBtn.scss';
 
-const OpenFormBtn = props => (
+const OpenFormBtn = ({ openForm }) => (
   <div className={styles['add-btn']}>
     Add service
-    <button onClick={props.openForm} />
+    <button onClick={openForm} />
   </div>
+);
+
+const mapDispatchToProps = dispatch => (
+  {
+    openForm: () => dispatch({
+      type: 'TOGGLE_FORM',
+    }),
+  }
 );
 
 OpenFormBtn.propTypes = {
@@ -15,4 +24,8 @@ OpenFormBtn.propTypes = {
 OpenFormBtn.defaultProps = {
   openForm: null,
 };
-export default OpenFormBtn;
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(OpenFormBtn);

@@ -1,16 +1,26 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { func } from 'prop-types';
+import { connect } from 'react-redux';
 import styles from './shared.scss';
 
-const CloseFormBtn = props => (
+const CloseFormBtn = ({ closeForm }) => (
   <div className={styles.closebtn}>
-    <button onClick={props.closeForm}>&times;</button>
+    <button onClick={closeForm}>&times;</button>
   </div>
 );
 CloseFormBtn.propTypes = {
-  closeForm: PropTypes.func,
+  closeForm: func,
 };
 CloseFormBtn.defaultProps = {
   closeForm: null,
 };
-export default CloseFormBtn;
+
+const mapDispatchToProps = dispatch => (
+  {
+    closeForm: () => dispatch({
+      type: 'TOGGLE_FORM',
+    }),
+  }
+);
+
+export default connect(null, mapDispatchToProps)(CloseFormBtn);
