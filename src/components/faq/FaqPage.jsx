@@ -1,47 +1,54 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { bool, number, string, func, arrayOf, shape } from 'prop-types';
+import { connect } from 'react-redux';
 import Questions from './Questions';
 import styles from './faq.scss';
 import FormContainer from './containers/FormContainer';
 import Subtitle from './../shared/Subtitle';
 import OpenFormBtn from './../shared/OpenFormBtn';
 
-const FaqPage = props => (
+const FaqPage = ({ formOpen, ...props }) => (
   <div className={styles.faqBox}>
     <Subtitle subtitle="Frequently asked questions" />
     <div className={styles.faqBtnContainer}>
       <OpenFormBtn text="Add Question" openForm={props.handleFormChange} />
     </div>
-    {props.expanded && <FormContainer
+    {formOpen ? <FormContainer
       addMessage={props.addMessage}
       updateQuestions={props.updateQuestions}
       closeForm={props.handleFormChange}
-    />
-    }
-    <Questions
+    /> : <Questions
       messageShown={props.messageShown}
       questions={props.questions}
       loaded={props.loaded}
-    />
+    />}
   </div>
 );
 
+const mapStateToProps = state => (
+  {
+    formOpen: state.faq.formOpenFAQ,
+  }
+);
+
 FaqPage.propTypes = {
-  messageShown: PropTypes.bool,
-  expanded: PropTypes.bool,
-  loaded: PropTypes.bool,
-  questions: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    question: PropTypes.string,
-    answer: PropTypes.string,
+  // props from redux state
+  formOpen: bool,
+  // react state props
+  messageShown: bool,
+  loaded: bool,
+  questions: arrayOf(shape({
+    id: number,
+    question: string,
+    answer: string,
   })),
-  handleFormChange: PropTypes.func,
-  addMessage: PropTypes.func,
-  updateQuestions: PropTypes.func,
+  handleFormChange: func,
+  addMessage: func,
+  updateQuestions: func,
 };
 FaqPage.defaultProps = {
+  formOpen: false,
   messageShown: false,
-  expanded: false,
   loaded: false,
   questions: {},
   handleFormChange: null,
@@ -49,10 +56,10 @@ FaqPage.defaultProps = {
   updateQuestions: null,
 };
 OpenFormBtn.propTypes = {
-  openForm: PropTypes.func,
+  openForm: func,
 };
 OpenFormBtn.defaultProps = {
   openForm: null,
 };
 
-export default FaqPage;
+export default connect(mapStateToProps)(FaqPage);

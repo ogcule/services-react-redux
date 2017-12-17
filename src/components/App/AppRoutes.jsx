@@ -1,7 +1,7 @@
 // routes component
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import ServicesContainer from './../Services/containers/ServicesContainer';
+import ServicesPage from './../Services/containers/ServicesPage';
 import Home from './../Home/Home';
 import FaqContainer from './../faq/containers/FaqContainer';
 import Title from './Title';
@@ -15,7 +15,7 @@ const AppRoutes = () => (
       <div className={styles['inner-container']}>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/Services" component={ServicesContainer} />
+          <Route path="/Services" component={ServicesPage} />
           <Route path="/faq" component={FaqContainer} />
           <Route path="*" component={NotFoundPage} />
         </Switch>

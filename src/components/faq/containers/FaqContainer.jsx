@@ -1,6 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+// import { func } from 'prop-types';
 import FaqPage from './../FaqPage';
 import apiFaq from './../../../api/apiFaq';
+// import currentRoute from './../../../actions/index';
 
 // component for the frequently asked questions section
 class FaqContainer extends React.Component {
@@ -63,4 +66,12 @@ class FaqContainer extends React.Component {
   }
 }
 
-export default FaqContainer;
+// FaqContainer.propTypes = {
+//   dispatch: func,
+// };
+//
+// FaqContainer.defaultProps = {
+//   dispatch: null,
+// };
+
+export default connect()(FaqContainer);
