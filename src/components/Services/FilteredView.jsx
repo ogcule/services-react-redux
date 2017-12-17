@@ -1,31 +1,39 @@
 import React from 'react';
 import { bool } from 'prop-types';
+import { connect } from 'react-redux';
 import Service from './Service';
 import NoServices from './NoServices';
 import styles from './styles/filterView.scss';
 import { filterType } from './../../types/index';
 
-const FilteredView = (props) => {
-  if (!props.filter.loaded) {
+const FilteredView = ({ loaded, filteredServices }) => {
+  if (!loaded) {
     return <p>.....Loading</p>;
   }
   return (
     <div className={styles['filter-view-container']}>
-      {props.filter.filteredServices.length === 0 ? <NoServices /> :
-      props.filter.filteredServices.map(serviceInfo =>
+      {filteredServices.length === 0 ? <NoServices /> :
+       filteredServices.map(serviceInfo =>
         (<Service key={serviceInfo.id} serviceInfo={serviceInfo} />))
       }
     </div>
   );
 };
 
+const mapStateToProps = state => (
+  {
+    loaded: state.services.filter.loaded,
+    filteredServices: state.services.filter.filteredServices,
+  }
+
+);
 FilteredView.propTypes = {
-  filter: filterType,
+  filteredServices: filterType,
   loaded: bool,
 };
 FilteredView.defaultProps = {
-  filter: null,
+  filteredServices: null,
   loaded: false,
 };
 
-export default FilteredView;
+export default connect(mapStateToProps)(FilteredView);

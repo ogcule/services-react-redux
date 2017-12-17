@@ -58,12 +58,14 @@ export const getFilteredBothSuccess = (category, tags, data) => (
   }
 );
 
-export const getFilteredCategorySuccess = (category, tags, data) => (
+export const getFilteredCategorySuccess = (category, data) => (
   {
     type: GET_FILTERED_CATEGORY_SUCCESS,
-    filteredServices: data,
-    category,
-    tags,
+    filter: {
+      filteredServices: data,
+      category,
+      tags: '',
+    },
   }
 );
 
@@ -102,9 +104,12 @@ export const getFilteredTags = tags => (
       .catch(error => console.log(error.message))
 );
 
-export const getFilteredCategory = (category, tags) => (
+export const getFilteredCategory = category => (
   dispatch =>
     apiServices.requestGetCategory(category)
-      .then(data => dispatch(getFilteredCategorySuccess(category, tags, data)))
+      .then((data) => {
+        console.log(category, data);
+        dispatch(getFilteredCategorySuccess(category, data));
+      })
       .catch(error => console.log(error.message))
 );

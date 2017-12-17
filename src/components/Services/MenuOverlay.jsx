@@ -1,66 +1,87 @@
 import React from 'react';
-import { bool, func, node } from 'prop-types';
+import { bool, node, func } from 'prop-types';
+import { connect } from 'react-redux';
 import images from './../../utils/images';
 import OptionBtn from './../shared/OptionBtn';
 import styles from './styles/menuOverlay.scss';
 
-const MenuOverlay = (props) => {
-  const background = props.menuOverlay ?
+const MenuOverlay = ({
+  menuOverlay,
+  tagMenu,
+  displayCategories,
+  searchBox,
+  children,
+  dispatch,
+}) => {
+  const background = menuOverlay ?
     'transparent-bg' :
     'container';
   return (
     <div className={styles[background]}>
       <div className={styles['menu-container']}>
-        {!props.tagMenu && <OptionBtn
+        {!tagMenu && <OptionBtn
           text="Categories"
           image={images.listIcon}
-          active={props.displayCategories}
-          clickHandler={() => { props.handleDisplayCategories(); props.handleMenuOverlayChange(); }}
+          active={displayCategories}
+          clickHandler={() => {
+            dispatch({
+              type: 'TOGGLE_DISPLAY_CATEGORIES',
+            });
+          }}
         />}
-        {!props.displayCategories && <OptionBtn
+        {!displayCategories && <OptionBtn
           text="Tags"
           image={images.tagIcon}
-          active={props.tagMenu}
-          clickHandler={() => { props.handleTagMenu(); props.handleMenuOverlayChange(); }}
+          active={tagMenu}
+          clickHandler={() => {
+            dispatch({
+              type: 'TOGGLE_TAG_MENU',
+            });
+          }}
         />}
-        {(!props.searchBox && !props.menuOverlay) && <OptionBtn
+        {(!searchBox && !menuOverlay) && <OptionBtn
           text="Search"
           image={images.search}
-          active={props.searchBox}
-          clickHandler={() => { props.handleSearchBoxChange(); }}
+          active={searchBox}
+          clickHandler={() => {
+             dispatch({
+               type: 'SET_SEARCHBOX_VIEW',
+             });
+           }}
         />}
-        {!props.menuOverlay && props.children[2]}
+        {!menuOverlay && children[2]}
       </div>
       <div>
-        {props.displayCategories && props.children[0]}
-        {props.tagMenu && props.children[1]}
+        {displayCategories && children[0]}
+        {tagMenu && children[1]}
       </div>
     </div>
   );
 };
 
+const mapStateToProps = state => (
+  {
+    menuOverlay: state.services.menuOverlay,
+    tagMenu: state.services.tagMenu,
+    displayCategories: state.services.displayCategories,
+    searchBox: state.services.searchBox,
+  }
+);
+
 MenuOverlay.propTypes = {
-  handleDisplayCategories: func,
-  handleTagMenu: func,
-  handleMenuOverlayChange: func,
-  handleSearchBoxChange: func,
-  // handleFilterChange: func,
-  displayCategories: bool,
-  tagMenu: bool,
   menuOverlay: bool,
+  tagMenu: bool,
+  displayCategories: bool,
   children: node,
   searchBox: bool,
+  dispatch: func,
 };
 MenuOverlay.defaultProps = {
-  handleDisplayCategories: null,
-  handleTagMenu: null,
-  handleMenuOverlayChange: null,
-  handleSearchBoxChange: null,
-  // handleFilterChange: null,
-  displayCategories: false,
-  tagMenu: false,
   menuOverlay: false,
+  tagMenu: false,
+  displayCategories: false,
   children: null,
   searchBox: false,
+  dispatch: null,
 };
-export default MenuOverlay;
+export default connect(mapStateToProps)(MenuOverlay);

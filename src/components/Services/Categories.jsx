@@ -1,15 +1,24 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { func } from 'prop-types';
 import { categories } from './../../data/categories';
 import styles from './styles/categories.scss';
+import { getFilteredCategory } from './../../actions/serviceActions';
 
 
-const Categories = props => (
+const Categories = ({ dispatch }) => (
   <div className={styles['categories-container']} >
     <ul className={styles.categories}>
       {categories.map(category => (
         <li key={category}>
-          <button data-category={category} onClick={props.handleFilterClick}>{category}</button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(getFilteredCategory(category));
+            }}
+          >
+            {category}
+          </button>
         </li>
         ))
       }
@@ -18,9 +27,11 @@ const Categories = props => (
 );
 
 Categories.propTypes = {
-  handleFilterClick: PropTypes.func,
+  dispatch: func,
 };
+
 Categories.defaultProps = {
-  handleFilterClick: null,
+  dispatch: null,
 };
-export default Categories;
+
+export default connect()(Categories);

@@ -12,7 +12,7 @@
 .form-container-services {
   @extend %formContainer;
   width: 80%;
-  margin: 0 auto;
+  margin: 80px auto 0 auto;
 form{
     display: flex;
     flex-flow: column nowrap;

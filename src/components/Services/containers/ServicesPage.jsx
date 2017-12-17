@@ -52,7 +52,7 @@ const ServicesPage = ({
 const mapStateToProps = state => (
   {
     formOpen: state.formView.formOpen,
-    filteredView: state.services.filteredView,
+    filteredView: state.services.filter.filteredView,
     searchBox: state.services.searchBox,
   }
 );

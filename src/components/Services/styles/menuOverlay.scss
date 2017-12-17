@@ -18,10 +18,12 @@
   height: auto;
   min-height: 50px;
   padding-top: 5px;
+  position: fixed;
+  top: 90px;
+  left: 0;
 }
 
 .container {
   width: 100%;
   height: auto;
-  padding-top: 30px;
 }

@@ -19,7 +19,7 @@ const services = (state = initalState, action) => {
     case 'GET_FILTERED_TAGS_SUCCESS':
       return Object.assign({}, state, {
         filter: {
-          ...state.formView.filter,
+          ...state.filter,
           filteredServices: action.filter.filteredServices,
           tags: action.filter.tags,
           loaded: true,
@@ -30,7 +30,7 @@ const services = (state = initalState, action) => {
     case 'GET_FILTERED_BOTH_SUCCESS':
       return Object.assign({}, state, {
         filter: {
-          ...state.formView.filter,
+          ...state.filter,
           filteredServices: action.filter.filteredServices,
           tags: action.filter.tags,
           category: action.filter.category,
@@ -54,14 +54,16 @@ const services = (state = initalState, action) => {
     case 'TOGGLE_DISPLAY_CATEGORIES':
       return Object.assign({}, state, {
         displayCategories: !state.displayCategories,
+        menuOverlay: !state.menuOverlay,
       });
     case 'TOGGLE_TAG_MENU':
       return Object.assign({}, state, {
         tagMenu: !state.tagMenu,
+        menuOverlay: !state.menuOverlay,
       });
     case 'TOGGLE_MENUOVERLAY':
       return Object.assign({}, state, {
-        MenuOverlay: !state.MenuOverlay,
+        menuOverlay: !state.MenuOverlay,
       });
     case 'SET_SEARCHBOX_VIEW':
       return Object.assign({}, state, {
