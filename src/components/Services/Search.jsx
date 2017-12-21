@@ -1,34 +1,89 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { bool, func, shape, string } from 'prop-types';
+import { Field, reduxForm } from 'redux-form';
 import styles from './styles/search.scss';
-import { filterType } from './../../types/index';
 
-const Search = props => (
-  <div className={styles['search-container']}>
-    <form className={styles['search-box']} >
-      <input
-        type="text"
-        name="search"
-        data-forms="search"
-        className={styles.searchTerm}
-        value={props.filter.search}
-        onChange={props.handleInputChange}
-        placeholder="Search..."
-      />
-      <button type="submit" onClick={props.handleSearchClick} />
-    </form>
-    {props.filter.searchErr && <p style={{ color: 'red' }}>Error: Please enter text into search box</p>}
+// using redux-form for client side validation
+const required = value => (value ? undefined : 'Field can not be blank');
+
+const alphaNumeric = value =>
+  value && (/[^a-zA-Z0-9 ]/i.test(value)
+    ? 'Only alphanumeric characters'
+    : undefined);
+
+const renderField = ({
+  input,
+  type,
+  meta: { touched, error, warning },
+}) => (
+  <div className={styles['input-and-error']}>
+    <input
+      {...input}
+      placeholder="Search..."
+      type={type}
+    />
+    {touched &&
+      (
+        <h4 className={styles.error}>
+          {((error && <span>{error}</span>) ||
+           (warning && <span>{warning}</span>))
+          }
+        </h4>
+      )
+    }
   </div>
 );
 
+const Search = (props) => {
+  const {
+    handleSubmit, pristine, submitting,
+  } = props;
+  return (
+    <div className={styles['search-container']}>
+      <form
+        method="get"
+        onSubmit={handleSubmit}
+        className={styles['search-box']}
+      >
+        <Field
+          name="search"
+          type="text"
+          component={renderField}
+          validate={required}
+          warn={alphaNumeric}
+        />
+        <button
+          type="submit"
+          disabled={pristine || submitting}
+        />
+      </form>
+    </div>
+  );
+};
+
+renderField.propTypes = {
+  input: shape({}),
+  label: string,
+  type: string,
+  meta: shape({}),
+};
+renderField.defaultProps = {
+  input: {},
+  label: '',
+  type: '',
+  meta: {},
+};
 Search.propTypes = {
-  filter: filterType,
-  handleInputChange: PropTypes.func,
-  handleSearchClick: PropTypes.func,
+  pristine: bool,
+  submitting: bool,
+  handleSubmit: func,
 };
 Search.defaultProps = {
-  filter: {},
-  handleInputChange: null,
-  handleSearchClick: null,
+  pristine: true,
+  submitting: true,
+  handleSubmit: null,
 };
-export default Search;
+
+export default reduxForm({
+  form: 'search',
+})(Search);

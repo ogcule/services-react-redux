@@ -58,6 +58,17 @@ const services = (state = initalState, action) => {
         displayCategories: !state.displayCategories,
         menuOverlay: !state.menuOverlay,
       });
+    case 'GET_SEARCHED_SERVICES_SUCCESS':
+      return Object.assign({}, state, {
+        filter: {
+          ...state.filter,
+          filteredServices: action.filter.filteredServices,
+          loaded: true,
+          filteredView: true,
+        },
+        menuOverlay: false,
+        searchBox: false,
+      });
     case 'TOGGLE_TAG_MENU':
       return Object.assign({}, state, {
         tagMenu: !state.tagMenu,

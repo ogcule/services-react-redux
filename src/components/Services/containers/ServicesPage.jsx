@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bool } from 'prop-types';
+import { bool, func } from 'prop-types';
 import styles from './../styles/servicesPage.scss';
 import Subtitle from './../../shared/Subtitle';
 import OpenFormBtn from './../../shared/containers/openFormBtnContainer';
@@ -9,18 +9,24 @@ import FilterByTags from './FilterByTags';
 import CurrentView from './CurrentView';
 import MenuOverlay from './MenuOverlay';
 import Search from './../Search';
-import ServiceFormBox from './../ServiceFormBox';
+import ServiceFormBoxContainer from './ServiceFormBoxContainer';
 import ServiceForm from './ServiceForm';
 import Categories from './Categories';
+import { getSearchedServices, createService } from './../../../actions/serviceActions';
 
 const ServicesPage = ({
-  formOpen,
+  dispatch,
   filteredView,
   searchBox,
+  formOpen,
 }) => {
-  const submit = values =>
-  // print the form values to the console
-    console.log(`You submitted:\n\n${JSON.stringify(values, null, 2)}`);
+  // values from redux-form is an object
+  const submitSearch = values => dispatch(getSearchedServices(values.search));
+
+  const submitNewService = (values) => {
+    console.log(values);
+    dispatch(createService(values));
+  };
   return (
     <div className={styles['simple-container']}>
       <CurrentView>
@@ -33,14 +39,16 @@ const ServicesPage = ({
           <OpenFormBtn text="" />
         </MenuOverlay>
         {(!filteredView && searchBox && !formOpen) &&
-        <Search />}
+        <Search
+          onSubmit={submitSearch}
+        />}
         {console.log('service form', formOpen)}
         {formOpen &&
-          <ServiceFormBox>
+          <ServiceFormBoxContainer>
             <ServiceForm
-              onSubmit={submit}
+              onSubmit={submitNewService}
             />
-          </ServiceFormBox>}
+          </ServiceFormBoxContainer>}
         {(filteredView && !searchBox && !formOpen) &&
           <FilteredView />
         }
@@ -58,11 +66,13 @@ const mapStateToProps = state => (
 );
 
 ServicesPage.propTypes = {
+  dispatch: func,
   formOpen: bool,
   filteredView: bool,
   searchBox: bool,
 };
 ServicesPage.defaultProps = {
+  dispatch: null,
   formOpen: false,
   filteredView: false,
   searchBox: true,

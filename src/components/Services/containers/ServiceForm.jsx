@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { func, string, objectOf, bool } from 'prop-types';
+import { func, shape, bool } from 'prop-types';
 import styles from './../styles/serviceForm.scss';
 import { tags, categories, rcgpCurriculum } from './../../../data/categories';
 import ErrorMsg from './../../shared/ErrorMsg';
@@ -8,10 +8,11 @@ import ErrorMsg from './../../shared/ErrorMsg';
 
 const ServiceForm = (props) => {
   const {
-    handleSubmit, pristine, submitting,
+    handleSubmit, pristine, submitting, errorMsg,
   } = props;
   return (
     <form method="post" onSubmit={handleSubmit} >
+      {console.log('ServiceForm:', errorMsg)}
       <legend>Add a service</legend>
       <p>* Required</p>
       <label htmlFor="category">
@@ -44,7 +45,7 @@ const ServiceForm = (props) => {
             </option>))}
         </Field>
       </label>
-      {props.errorMsg.tags && <ErrorMsg msg={props.errorMsg.tags} />}
+      {errorMsg.tags && <ErrorMsg msg={errorMsg.tags} />}
       <label htmlFor="rcgp">
         * Category (RCGP):
         <Field
@@ -67,7 +68,7 @@ const ServiceForm = (props) => {
           data-forms="values"
         />
       </label>
-      {props.errorMsg.name && <ErrorMsg msg={props.errorMsg.name} />}
+      {errorMsg.name && <ErrorMsg msg={errorMsg.name} />}
       <label htmlFor="description">
         * Description of Service:
         <Field
@@ -77,7 +78,7 @@ const ServiceForm = (props) => {
           data-forms="values"
         />
       </label>
-      {props.errorMsg.description && <ErrorMsg msg={props.errorMsg.description} />}
+      {errorMsg.description && <ErrorMsg msg={errorMsg.description} />}
       <label htmlFor="referral">
         Referral:
         <Field
@@ -106,7 +107,7 @@ const ServiceForm = (props) => {
           data-forms="values"
         />
       </label>
-      {props.errorMsg.postcode && <ErrorMsg msg={props.errorMsg.postcode} />}
+      {errorMsg.postcode && <ErrorMsg msg={errorMsg.postcode} />}
       <label htmlFor="telephone">
         * Telephone:
         <Field
@@ -116,7 +117,7 @@ const ServiceForm = (props) => {
           data-forms="values"
         />
       </label>
-      {props.errorMsg.telephone && <ErrorMsg msg={props.errorMsg.telephone} />}
+      {errorMsg.telephone && <ErrorMsg msg={errorMsg.telephone} />}
       <label htmlFor="email">
         E-mail:
         <Field
@@ -127,7 +128,7 @@ const ServiceForm = (props) => {
           placeholder="service@domain.com"
         />
       </label>
-      {props.errorMsg.email && <ErrorMsg msg={props.errorMsg.email} />}
+      {errorMsg.email && <ErrorMsg msg={errorMsg.email} />}
       <label htmlFor="weblink">
         Web address:
         <Field
@@ -138,7 +139,7 @@ const ServiceForm = (props) => {
           placeholder="https://www.servicewebsite.com"
         />
       </label>
-      {props.errorMsg.weblink && <ErrorMsg msg={props.errorMsg.weblink} />}
+      {errorMsg.weblink && <ErrorMsg msg={errorMsg.weblink} />}
       <div className={styles.formBtn}>
         <button type="submit" disabled={pristine || submitting}>
           Submit
@@ -152,7 +153,7 @@ ServiceForm.propTypes = {
   pristine: bool,
   submitting: bool,
   handleSubmit: func,
-  errorMsg: objectOf(string),
+  errorMsg: shape({}),
 };
 ServiceForm.defaultProps = {
   pristine: true,

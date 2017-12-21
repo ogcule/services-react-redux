@@ -7,6 +7,7 @@ import {
   GET_FILTERED_TAGS_SUCCESS,
   GET_FILTERED_BOTH_SUCCESS,
   GET_FILTERED_CATEGORY_SUCCESS,
+  GET_SEARCHED_SERVICES_SUCCESS,
 } from './actionTypes';
 // action creator
 // concise body syntax, implied "return",
@@ -65,7 +66,22 @@ export const getFilteredCategorySuccess = (category, data) => (
       filteredServices: data,
       category,
       tags: '',
+      loaded: true,
+      filteredView: true,
     },
+  }
+);
+
+export const getSearchedServicesSuccess = data => (
+  {
+    type: GET_SEARCHED_SERVICES_SUCCESS,
+    filter: {
+      filteredServices: data,
+      loaded: true,
+      filteredView: true,
+    },
+    menuOverlay: false,
+    searchBox: false,
   }
 );
 
@@ -113,6 +129,16 @@ export const getFilteredCategory = category => (
       .then((data) => {
         console.log(category, data);
         dispatch(getFilteredCategorySuccess(category, data));
+      })
+      .catch(error => console.log(error.message))
+);
+
+export const getSearchedServices = text => (
+  dispatch =>
+    apiServices.requestGetSearch(text)
+      .then((data) => {
+        console.log(`searched data: ${data}`);
+        dispatch(getSearchedServicesSuccess(data));
       })
       .catch(error => console.log(error.message))
 );
