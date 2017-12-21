@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './shared.scss';
+import styles from './styles/shared.scss';
 
 const ErrorMsg = props => <p className={styles.errorText}>{props.msg}</p>;
 

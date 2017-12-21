@@ -1,10 +1,12 @@
+// reducers and state for retrieving services
+// from api and filtering and displaying them.
 const initalState = {
   displayCategories: false,
   tagMenu: false,
   filter: {
     category: '',
     tags: '',
-    filteredServices: [],
+    filteredServices: {},
     search: '',
     loaded: false,
     filteredView: false,

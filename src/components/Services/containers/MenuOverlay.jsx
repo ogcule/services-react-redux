@@ -1,9 +1,9 @@
 import React from 'react';
 import { bool, node, func } from 'prop-types';
 import { connect } from 'react-redux';
-import images from './../../utils/images';
-import OptionBtn from './../shared/OptionBtn';
-import styles from './styles/menuOverlay.scss';
+import images from './../../../utils/images';
+import OptionBtn from './../../shared/OptionBtn';
+import styles from './../styles/menuOverlay.scss';
 
 const MenuOverlay = ({
   menuOverlay,

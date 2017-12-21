@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './faq.scss';
 import ErrorMsg from './../shared/ErrorMsg';
-import CloseFormBtn from './../shared/CloseFormBtn';
+import CloseFormBtn from './../shared/containers/CloseFormBtn';
 
 const Form = props => (
   <div className={styles['transparent-bg']}>

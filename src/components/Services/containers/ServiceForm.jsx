@@ -1,9 +1,9 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { func, string, objectOf, bool } from 'prop-types';
-import styles from './styles/serviceForm.scss';
-import { tags, categories, rcgpCurriculum } from './../../data/categories';
-import ErrorMsg from './../shared/ErrorMsg';
+import styles from './../styles/serviceForm.scss';
+import { tags, categories, rcgpCurriculum } from './../../../data/categories';
+import ErrorMsg from './../../shared/ErrorMsg';
 
 
 const ServiceForm = (props) => {

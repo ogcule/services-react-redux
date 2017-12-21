@@ -4,14 +4,14 @@ import { bool } from 'prop-types';
 import styles from './../styles/servicesPage.scss';
 import Subtitle from './../../shared/Subtitle';
 import OpenFormBtn from './../../shared/containers/openFormBtnContainer';
-import FilteredView from './../FilteredView';
-import FilterByTags from './../FilterByTags';
-import CurrentView from './../CurrentView';
-import MenuOverlay from './../MenuOverlay';
+import FilteredView from './FilteredView';
+import FilterByTags from './FilterByTags';
+import CurrentView from './CurrentView';
+import MenuOverlay from './MenuOverlay';
 import Search from './../Search';
 import ServiceFormBox from './../ServiceFormBox';
-import ServiceForm from './../ServiceForm';
-import Categories from './../Categories';
+import ServiceForm from './ServiceForm';
+import Categories from './Categories';
 
 const ServicesPage = ({
   formOpen,

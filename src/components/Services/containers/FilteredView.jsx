@@ -1,10 +1,10 @@
 import React from 'react';
 import { bool } from 'prop-types';
 import { connect } from 'react-redux';
-import Service from './Service';
-import NoServices from './NoServices';
-import styles from './styles/filterView.scss';
-import { filterType } from './../../types/index';
+import Service from './../Service';
+import NoServices from './../NoServices';
+import styles from './../styles/filterView.scss';
+import { filterServicesType } from './../../../types/index';
 
 const FilteredView = ({ loaded, filteredServices }) => {
   if (!loaded) {
@@ -28,7 +28,7 @@ const mapStateToProps = state => (
 
 );
 FilteredView.propTypes = {
-  filteredServices: filterType,
+  filteredServices: filterServicesType,
   loaded: bool,
 };
 FilteredView.defaultProps = {

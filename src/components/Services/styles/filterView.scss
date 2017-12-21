@@ -1,13 +1,13 @@
-@import "../../../styles/colors";
-@import "../../../styles/buttons";
-@import "../../../styles/fonts";
-@import "../../../styles/container";
-@import "../../../styles/keyframes";
+@import '../../../styles/colors';
+@import '../../../styles/buttons';
+@import '../../../styles/fonts';
+@import '../../../styles/container';
+@import '../../../styles/keyframes';
 
 .filter-view-container {
   @extend %inner-container;
-  padding-top: 90px;
   flex: 20 0 auto;
+  padding-top: 90px;
 }
 
 @media only screen

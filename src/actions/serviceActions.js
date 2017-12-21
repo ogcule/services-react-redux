@@ -100,7 +100,10 @@ export const createService = values => (
 export const getFilteredTags = tags => (
   dispatch =>
     apiServices.requestGetTags(tags)
-      .then(data => dispatch(getFilteredTagsSuccess(data, tags)))
+      .then((data) => {
+        console.log(tags, data);
+        dispatch(getFilteredTagsSuccess(data, tags));
+      })
       .catch(error => console.log(error.message))
 );
 

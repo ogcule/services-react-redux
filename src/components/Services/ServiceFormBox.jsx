@@ -1,7 +1,7 @@
 import React from 'react';
 import { bool, node } from 'prop-types';
 import styles from './styles/serviceFormContainer.scss';
-import CloseFormBtn from './../shared/CloseFormBtn';
+import CloseFormBtn from './../shared/containers/CloseFormBtn';
 import ErrorMsg from './../shared/ErrorMsg';
 import SuccessMessage from './../shared/SuccessMessage';
 

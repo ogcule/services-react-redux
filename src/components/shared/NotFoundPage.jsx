@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import styles from './shared.scss';
+import styles from './styles/shared.scss';
 
 const NotFoundPage = ({ location }) => (
   <div className={styles.notFound}>

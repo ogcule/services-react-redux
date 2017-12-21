@@ -1,7 +1,7 @@
 import React from 'react';
 import { func } from 'prop-types';
 import { connect } from 'react-redux';
-import styles from './shared.scss';
+import styles from './../styles/shared.scss';
 
 const CloseFormBtn = ({ closeForm }) => (
   <div className={styles.closebtn}>

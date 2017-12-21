@@ -70,6 +70,25 @@ const filterType = shape({
   })),
 });
 
+const filterServicesType = arrayOf(shape({
+  id: number,
+  name: string,
+  category: string,
+  description: string,
+  image: string,
+  link: string,
+  email: string,
+  telephone: string,
+  address: string,
+  rcgp: string,
+  postcode: string,
+  linkImg: string,
+  tags: oneOfType([
+    string,
+    arrayOf(string),
+  ]),
+}));
+
 const handleClearAllType = shape({
   values: shape({
     image: string,
@@ -145,4 +164,5 @@ export {
   filterType,
   handleClearAllType,
   errorMsgType,
+  filterServicesType,
 };

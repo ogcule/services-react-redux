@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { string, node } from 'prop-types';
-import styles from './styles/currentView.scss';
-import { getFilteredCategory } from './../../actions/serviceActions';
+import styles from './../styles/currentView.scss';
+import { getFilteredCategory } from './../../../actions/serviceActions';
 
 const CurrentView = ({
   category,
