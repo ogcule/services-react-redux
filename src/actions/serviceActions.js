@@ -1,3 +1,4 @@
+// import { SubmissionError } from 'redux-form';
 import apiServices from './../api/apiServices';
 import defaultFormValues from './../utils/defaultFormValues';
 import {
@@ -8,6 +9,7 @@ import {
   GET_FILTERED_BOTH_SUCCESS,
   GET_FILTERED_CATEGORY_SUCCESS,
   GET_SEARCHED_SERVICES_SUCCESS,
+  RESET_INVALID_MESSAGES,
 } from './actionTypes';
 // action creator
 // concise body syntax, implied "return",
@@ -31,6 +33,7 @@ export const fetchInvalidMessages = invalidMsgs => (
   {
     type: FETCH_INVALID_MESSAGES,
     invalidMsgs,
+    hasInvalidMsgs: true,
   }
 );
 
@@ -85,6 +88,12 @@ export const getSearchedServicesSuccess = data => (
   }
 );
 
+export function resetInvalidMessages(bool) {
+  return {
+    type: RESET_INVALID_MESSAGES,
+    hasInvalidMsgs: bool,
+  };
+}
 // Async action, a function that returns a
 // dispatcher function that dipatches an ation
 // at a later time.
@@ -96,6 +105,24 @@ export const getFilteredBoth = (category, tags) => (
       .catch(err => console.log(err.message))
 );
 
+// export const createService = values => (
+//   dispatch =>
+//     apiServices.requestPost(...defaultFormValues(values))
+//       .then((data) => {
+//         console.log('Response data from submit call in ServicesContainer', data);
+//         /* data from requstPost is either an error message(object)
+//         or returned id number if successful */
+//         if (typeof data !== 'number') {
+//           // dispatch(fetchInvalidMessages(data));
+//           throw new SubmissionError(data);
+//         }
+//       })
+//       .catch((error) => {
+//         console.log(error.message);
+//         dispatch(createServiceError(true));
+//       })
+// );
+
 export const createService = values => (
   dispatch =>
     apiServices.requestPost(...defaultFormValues(values))
@@ -103,12 +130,19 @@ export const createService = values => (
         console.log('Response data from submit call in ServicesContainer', data);
         /* data from requstPost is either an error message(object)
         or returned id number if successful */
-        if (typeof data !== 'number') {
-          dispatch(fetchInvalidMessages(data));
-        }
+        // if (typeof data !== 'number') {
+        //   // dispatch(fetchInvalidMessages(data));
+        //   console.log('throw error');
+        //   throw new SubmissionError(data);
+        // }
       })
       .catch((error) => {
-        console.log(error.message);
+        console.log('error from submit call in ServicesContainer', error.response.data.error);
+        // if (typeof error !== 'number') {
+        //   // dispatch(fetchInvalidMessages(data));
+        //   console.log('throw error');
+        //   throw new SubmissionError(data);
+        // }
         dispatch(createServiceError(true));
       })
 );

@@ -4,3 +4,45 @@
 @import '../../../styles/container';
 @import '../../../styles/keyframes';
 // formBtn is imported from buttons
+.service-form {
+  form {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    background-color: $white;
+    align-items: flex-end;
+    border-radius: 5px;
+    padding: 5px;
+    ul {
+     list-style-type: none;
+     width: 100%;
+    }
+  }
+  legend {
+  align-self: center;
+  text-align: center;
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 5px;
+  }
+  p {
+    float:right;
+  }
+}
+
+.service-input {
+  label {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0.2rem 0;
+    }
+    input, textarea, select, label {
+      font-size: 1.0em;
+      font-family: $text;
+    }
+    input, textarea, select {
+      width: 50%;
+      margin-left: 1rem;
+    }
+   }

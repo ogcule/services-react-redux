@@ -1,145 +1,169 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
-import { func, shape, bool } from 'prop-types';
+import { Field, reduxForm, reset } from 'redux-form';
+import {
+  func,
+  shape,
+  bool,
+  string,
+  arrayOf,
+} from 'prop-types';
 import styles from './../styles/serviceForm.scss';
-import { tags, categories, rcgpCurriculum } from './../../../data/categories';
-import ErrorMsg from './../../shared/ErrorMsg';
+import { tags, categories, rcgpCategories } from './../../../data/categories';
+// import ErrorMsg from './../../shared/ErrorMsg';
+// import { resetInvalidMessages } from './../../../actions/serviceActions';
+
+const renderField = ({
+  input,
+  label,
+  type,
+  meta: { touched, error },
+  htmlFor,
+  placeholder,
+}) => (
+  <div className={styles['service-input']}>
+    <label htmlFor={htmlFor}>{label}
+      <input {...input} placeholder={placeholder} type={type} />
+    </label>
+    {touched && error && <span>{error}</span>}
+  </div>
+);
+const renderFieldSelect = ({
+  input,
+  label,
+  type,
+  meta: { touched, error },
+  htmlFor,
+  options,
+}) => (
+  <div className={styles['service-input']}>
+    {type === 'select-multiple' ?
+      <label htmlFor={htmlFor}>{label}
+        <select
+          {...input}
+          multiple
+          size="3"
+          placeholder={label}
+          type={type}
+        >
+          {options.map(key => (
+            <option key={key} value={key}>
+              {key}
+            </option>))}
+        </select>
+      </label> :
+      <label htmlFor={htmlFor}>{label}
+        <select
+          {...input}
+          placeholder={label}
+          type={type}
+        >
+          {options.map(key => (
+            <option key={key} value={key}>
+              {key}
+            </option>))}
+        </select>
+      </label>
+    }
+    {touched && error && <span>{error}</span>}
+  </div>
+);
 
 
 const ServiceForm = (props) => {
   const {
-    handleSubmit, pristine, submitting, errorMsg,
+    handleSubmit, pristine, submitting,
   } = props;
+
   return (
-    <form method="post" onSubmit={handleSubmit} >
-      {console.log('ServiceForm:', errorMsg)}
+    <form
+      method="post"
+      onSubmit={handleSubmit}
+      className={styles['service-form']}
+    >
       <legend>Add a service</legend>
       <p>* Required</p>
-      <label htmlFor="category">
-        * Category:
-        <Field
-          name="category"
-          component="select"
-          data-forms="values"
-        >
-          {categories.map(category => (
-            <option key={category} value={category}>
-              {category}
-            </option>))}
-        </Field>
-      </label>
+      <Field
+        name="category"
+        component={renderFieldSelect}
+        htmlFor="category"
+        label="* Category:"
+        options={categories}
+      />
       <p>Hold the Ctrl key while clicking to select multiple tags (⌘-click on Mac).</p>
-      <label htmlFor="tags">
-        * Tags:
-        <Field
-          name="tags"
-          component="select"
-          data-forms="value"
-          multiple
-          type="select-multiple"
-          size="3"
-        >
-          {tags.map(tag => (
-            <option key={tag} value={tag}>
-              {tag}
-            </option>))}
-        </Field>
-      </label>
-      {errorMsg.tags && <ErrorMsg msg={errorMsg.tags} />}
-      <label htmlFor="rcgp">
-        * Category (RCGP):
-        <Field
-          name="rcgpCategory"
-          data-forms="values"
-          component="select"
-        >
-          {rcgpCurriculum.map(heading => (
-            <option key={Object.keys(heading)[0]} value={heading[Object.keys(heading)[0]]}>
-              {heading[Object.keys(heading)[0]]}
-            </option>))}
-        </Field>
-      </label>
-      <label htmlFor="name">
-        * Name of Service:
-        <Field
-          name="name"
-          component="input"
-          type="text"
-          data-forms="values"
-        />
-      </label>
-      {errorMsg.name && <ErrorMsg msg={errorMsg.name} />}
-      <label htmlFor="description">
-        * Description of Service:
-        <Field
-          name="description"
-          component="textarea"
-          type="text"
-          data-forms="values"
-        />
-      </label>
-      {errorMsg.description && <ErrorMsg msg={errorMsg.description} />}
-      <label htmlFor="referral">
-        Referral:
-        <Field
-          name="referral"
-          component="textarea"
-          type="text"
-          data-forms="values"
-          placeholder="Referral pathway"
-        />
-      </label>
-      <label htmlFor="address">
-        Address:
-        <Field
-          name="address"
-          component="textarea"
-          type="text"
-          data-forms="values"
-        />
-      </label>
-      <label htmlFor="postcode">
-        * Postcode:
-        <Field
-          name="postcode"
-          component="input"
-          type="text"
-          data-forms="values"
-        />
-      </label>
-      {errorMsg.postcode && <ErrorMsg msg={errorMsg.postcode} />}
-      <label htmlFor="telephone">
-        * Telephone:
-        <Field
-          name="telephone"
-          component="input"
-          type="tel"
-          data-forms="values"
-        />
-      </label>
-      {errorMsg.telephone && <ErrorMsg msg={errorMsg.telephone} />}
-      <label htmlFor="email">
-        E-mail:
-        <Field
-          type="email"
-          component="input"
-          name="email"
-          data-forms="values"
-          placeholder="service@domain.com"
-        />
-      </label>
-      {errorMsg.email && <ErrorMsg msg={errorMsg.email} />}
-      <label htmlFor="weblink">
-        Web address:
-        <Field
-          type="url"
-          component="input"
-          name="weblink"
-          data-forms="values"
-          placeholder="https://www.servicewebsite.com"
-        />
-      </label>
-      {errorMsg.weblink && <ErrorMsg msg={errorMsg.weblink} />}
+      <Field
+        name="tags"
+        component={renderFieldSelect}
+        type="select-multiple"
+        htmlFor="tags"
+        label="* Tags:"
+        options={tags}
+      />
+      <Field
+        name="rcgpCategory"
+        component={renderFieldSelect}
+        htmlFor="rcgp"
+        label="* Category (RCGP):"
+        options={rcgpCategories}
+      />
+      <Field
+        name="name"
+        component={renderField}
+        type="text"
+        label="* Name of Service: "
+        htmlFor="name"
+      />
+      <Field
+        name="description"
+        component={renderField}
+        type="text"
+        htmlFor="description"
+        label="* Description of Service:"
+      />
+      <Field
+        name="referral"
+        component={renderField}
+        type="text"
+        placeholder="Referral pathway"
+        htmlFor="referral"
+        label="Referral:"
+      />
+      <Field
+        name="address"
+        component={renderField}
+        type="text"
+        htmlFor="address"
+        label="Address:"
+      />
+      <Field
+        name="postcode"
+        component={renderField}
+        type="text"
+        htmlFor="postcode"
+        label="* Postcode:"
+      />
+      <Field
+        name="telephone"
+        component={renderField}
+        type="tel"
+        htmlFor="telephone"
+        label="* Telephone:"
+      />
+      <Field
+        type="email"
+        component={renderField}
+        name="email"
+        placeholder="service@domain.com"
+        htmlFor="email"
+        label="E-mail:"
+      />
+      <Field
+        type="url"
+        component={renderField}
+        name="weblink"
+        placeholder="https://www.servicewebsite.com"
+        htmlFor="weblink"
+        label="Web address:"
+      />
       <div className={styles.formBtn}>
         <button type="submit" disabled={pristine || submitting}>
           Submit
@@ -149,19 +173,57 @@ const ServiceForm = (props) => {
   );
 };
 
+const afterSubmit = (result, dispatch) => {
+  console.log('after submitted');
+  dispatch(reset('service'));
+};
+
+renderField.propTypes = {
+  input: shape({}),
+  label: string,
+  type: string,
+  meta: shape({}),
+  htmlFor: string,
+  placeholder: string,
+};
+renderField.defaultProps = {
+  input: {},
+  label: '',
+  type: '',
+  meta: {},
+  htmlFor: '',
+  placeholder: '',
+};
+renderFieldSelect.propTypes = {
+  input: shape({}),
+  label: string,
+  type: string,
+  meta: shape({}),
+  htmlFor: string,
+  placeholder: string,
+  options: arrayOf(string),
+};
+renderFieldSelect.defaultProps = {
+  input: {},
+  label: '',
+  type: '',
+  meta: {},
+  htmlFor: '',
+  placeholder: '',
+  options: [],
+};
 ServiceForm.propTypes = {
   pristine: bool,
   submitting: bool,
   handleSubmit: func,
-  errorMsg: shape({}),
 };
 ServiceForm.defaultProps = {
   pristine: true,
   submitting: true,
   handleSubmit: null,
-  errorMsg: {},
 };
 
 export default reduxForm({
   form: 'service',
+  onSubmitSuccess: afterSubmit,
 })(ServiceForm);

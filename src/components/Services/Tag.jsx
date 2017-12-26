@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './services.scss';
+import { string } from 'prop-types';
+import styles from './styles/services.scss';
 
 const Tag = props => (
   <li className={styles.tagContainer}>
@@ -12,7 +12,7 @@ const Tag = props => (
 );
 
 Tag.propTypes = {
-  tag: PropTypes.string,
+  tag: string,
 };
 Tag.defaultProps = {
   tag: '',

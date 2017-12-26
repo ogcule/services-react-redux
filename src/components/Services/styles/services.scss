@@ -1,8 +1,9 @@
-@import "../../styles/colors";
-@import "../../styles/buttons";
-@import "../../styles/fonts";
-@import "../../styles/container";
-@import "../../styles/keyframes";
+@import '../../../styles/colors';
+@import '../../../styles/buttons';
+@import '../../../styles/fonts';
+@import '../../../styles/container';
+@import '../../../styles/keyframes';
+
 a{
   text-decoration: none;
   cursor:pointer;
@@ -20,7 +21,7 @@ a{
   @include reset-button(1.2em);
   background: center no-repeat;
   background-size: contain;
-  background-image: url('./../../images/tag-icon.png');
+  background-image: url('./../../../images/tag-icon.png');
 }
 // CloseCategories
 .closeBtn {
@@ -30,7 +31,7 @@ a{
   @include reset-button(1.2em);
   background: center no-repeat;
   background-size: contain;
-  background-image: url('./../../images/close-icon.png');
+  background-image: url('./../../../images/close-icon.png');
 }
 // Service
 .serviceContainer {
@@ -117,7 +118,7 @@ p.required, span.required {
   @include reset-button(1.2em);
   background: center no-repeat;
   background-size: contain;
-  background-image: url('./../../images/left.png');
+  background-image: url('./../../../images/left.png');
 }
 // Reload
 .reloadBtn {
@@ -126,7 +127,7 @@ p.required, span.required {
   @include reset-button(1.2em);
   background: center no-repeat;
   background-size: contain;
-  background-image: url('./../../images/reload.png');
+  background-image: url('./../../../images/reload.png');
 }
 // NoServices
 .noServices {
@@ -171,7 +172,7 @@ svg {
   @include reset-button(1.2em);
   height: 24px;
   width: 24px;
-  background: url('./../../images/list-icon.png') no-repeat center;
+  background: url('./../../../images/list-icon.png') no-repeat center;
   background-size: contain;
 }
 

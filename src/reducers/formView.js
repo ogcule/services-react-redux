@@ -13,6 +13,7 @@ const initalState = {
     image: '',
     tags: '',
   },
+  hasInvalidMsgs: false,
   hasSubmitted: false,
   loaded: false,
 };
@@ -28,6 +29,7 @@ const formView = (state = initalState, action) => {
         invalidMsgs: {
           ...action.invalidMsgs,
         },
+        hasInvalidMsgs: action.hasInvalidMsgs,
       });
     case 'CREATE_SERVICE_SUCCESS':
       return Object.assign({}, state, {
@@ -36,6 +38,10 @@ const formView = (state = initalState, action) => {
     case 'CREATE_SERVICE_ERROR':
       return Object.assign({}, state, {
         hasErrored: action.hasErrored,
+      });
+    case 'RESET_INVALID_MESSAGES':
+      return Object.assign({}, state, {
+        hasInvalidMsgs: action.hasInvalidMsgs,
       });
     default:
       return state;

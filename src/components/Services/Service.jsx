@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './services.scss';
+import styles from './styles/services.scss';
 import linkImg from '../../images/link.png';
 import Tag from './Tag';
 import { serviceInfoType } from './../../types/index';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bool, func } from 'prop-types';
+import { bool, func, shape } from 'prop-types';
 import styles from './../styles/servicesPage.scss';
 import Subtitle from './../../shared/Subtitle';
 import OpenFormBtn from './../../shared/containers/openFormBtnContainer';
@@ -9,7 +9,7 @@ import FilterByTags from './FilterByTags';
 import CurrentView from './CurrentView';
 import MenuOverlay from './MenuOverlay';
 import Search from './../Search';
-import ServiceFormBoxContainer from './ServiceFormBoxContainer';
+import ServiceFormBox from './../ServiceFormBox';
 import ServiceForm from './ServiceForm';
 import Categories from './Categories';
 import { getSearchedServices, createService } from './../../../actions/serviceActions';
@@ -19,6 +19,8 @@ const ServicesPage = ({
   filteredView,
   searchBox,
   formOpen,
+  errorMsg,
+  hasInvalidMsgs,
 }) => {
   // values from redux-form is an object
   const submitSearch = values => dispatch(getSearchedServices(values.search));
@@ -27,6 +29,7 @@ const ServicesPage = ({
     console.log(values);
     dispatch(createService(values));
   };
+
   return (
     <div className={styles['simple-container']}>
       <CurrentView>
@@ -42,13 +45,14 @@ const ServicesPage = ({
         <Search
           onSubmit={submitSearch}
         />}
-        {console.log('service form', formOpen)}
         {formOpen &&
-          <ServiceFormBoxContainer>
+          <ServiceFormBox>
             <ServiceForm
               onSubmit={submitNewService}
+              errorMsg={errorMsg}
+              hasInvalidMsgs={hasInvalidMsgs}
             />
-          </ServiceFormBoxContainer>}
+          </ServiceFormBox>}
         {(filteredView && !searchBox && !formOpen) &&
           <FilteredView />
         }
@@ -62,6 +66,8 @@ const mapStateToProps = state => (
     formOpen: state.formView.formOpen,
     filteredView: state.services.filter.filteredView,
     searchBox: state.services.searchBox,
+    errorMsg: state.formView.invalidMsgs,
+    hasInvalidMsgs: state.formView.hasInvalidMsgs,
   }
 );
 
@@ -70,12 +76,16 @@ ServicesPage.propTypes = {
   formOpen: bool,
   filteredView: bool,
   searchBox: bool,
+  errorMsg: shape({}),
+  hasInvalidMsgs: bool,
 };
 ServicesPage.defaultProps = {
   dispatch: null,
   formOpen: false,
   filteredView: false,
   searchBox: true,
+  errorMsg: {},
+  hasInvalidMsgs: false,
 };
 
 export default connect(mapStateToProps)(ServicesPage);

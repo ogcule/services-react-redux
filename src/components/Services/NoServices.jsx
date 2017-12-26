@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './services.scss';
+import styles from './styles/services.scss';
 
 const NoServices = () => (
   <div className={styles.noServices}>

@@ -35,6 +35,10 @@ const rcgpCurriculum = [
   { 21: 'Care of People with Skin Problems' },
 ];
 
+const rcgpCategories = rcgpCurriculum.map(key => (
+  key[Object.keys(key)[0]]
+));
+
 const tags = [
   'Acutely ill', // red
   'Cardiovascular', // blue
@@ -57,4 +61,4 @@ const tags = [
   'LD',
 ];
 
-export { categories, rcgpCurriculum, tags };
+export { categories, rcgpCurriculum, tags, rcgpCategories };
