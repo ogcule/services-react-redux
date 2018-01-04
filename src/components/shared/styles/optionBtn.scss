@@ -13,15 +13,15 @@
   p{
     margin: 0;
     padding: 0;
-    order: 2;
+    order: 1;
   }
   button {
     @include reset-button(1.2em);
     height: 30px;
     width: 30px;
-    margin-right:5px;
+    margin-left: 5px;
     outline: none;
-    order: 1;
+    order: 2;
 }
 img {
   height: 24px;

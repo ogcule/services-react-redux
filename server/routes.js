@@ -20,11 +20,21 @@ const routes = (app) => {
     check('image', 'Use correct URL').isURL(),
     check('tags', 'Please select at least one tag').exists(),
   ], (req, res, next) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(422).json({ error: errors.mapped() });
-    }
+    try {
+    validationResult(req).throw();
+
     next();
+  } catch (err) {
+    // To make validationErrors in correct format for redux form validation.
+    const validationErrors = {};
+    Object.keys(err.mapped()).map( (key) => {
+      validationErrors[key] = err.mapped()[key].msg;
+      return validationErrors;
+    }
+  );
+    console.log('validation errors', validationErrors);
+    res.status(422).json({ validationErrors: validationErrors });
+  }
   }, services.createService);
   app.put('/api/service/:id', services.updateService);
   app.delete('/api/service/:name', services.removeService);
@@ -35,12 +45,22 @@ const routes = (app) => {
     check('question', 'Please enter a question').isLength({ min: 1 }),
     check('answer', 'Please enter an answer').isLength({ min: 1 }),
   ], (req, res, next) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(422).json({ error: errors.mapped() });
-    }
+    try {
+    validationResult(req).throw();
+
     next();
-  }, createFaq);
+  } catch (err) {
+    // To make validationErrors in correct format for redux form validation.
+    const validationErrors = {};
+    Object.keys(err.mapped()).map( (key) => {
+      validationErrors[key] = err.mapped()[key].msg;
+      return validationErrors;
+    }
+  );
+    console.log('validation errors', validationErrors);
+    res.status(422).json({ validationErrors: validationErrors });
+  }
+}, createFaq);
   app.put('/api/faq/:id', updateFaq);
   app.delete('/api/faq/:id', removeFaq);
 };

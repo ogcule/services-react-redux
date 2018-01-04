@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { bool, string, arrayOf, shape, number } from 'prop-types';
 import styles from './faq.scss';
 // stateless component that adds message when new FAQ added.
 // I need to make this go away, either by clicking on it or timed
@@ -25,12 +25,12 @@ const Questions = (props) => {
   );
 };
 Questions.propTypes = {
-  messageShown: PropTypes.bool,
-  loaded: PropTypes.bool,
-  questions: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    question: PropTypes.string,
-    answer: PropTypes.string,
+  messageShown: bool,
+  loaded: bool,
+  questions: arrayOf(shape({
+    id: number,
+    question: string,
+    answer: string,
   })),
 };
 Questions.defaultProps = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, reduxForm, reset } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import {
   func,
   shape,
@@ -7,10 +7,9 @@ import {
   string,
   arrayOf,
 } from 'prop-types';
+import CloseFormBtn from './../../shared/containers/CloseFormBtn';
 import styles from './../styles/serviceForm.scss';
 import { tags, categories, rcgpCategories } from './../../../data/categories';
-// import ErrorMsg from './../../shared/ErrorMsg';
-// import { resetInvalidMessages } from './../../../actions/serviceActions';
 
 const renderField = ({
   input,
@@ -75,107 +74,105 @@ const ServiceForm = (props) => {
   } = props;
 
   return (
-    <form
-      method="post"
-      onSubmit={handleSubmit}
-      className={styles['service-form']}
-    >
-      <legend>Add a service</legend>
-      <p>* Required</p>
-      <Field
-        name="category"
-        component={renderFieldSelect}
-        htmlFor="category"
-        label="* Category:"
-        options={categories}
-      />
-      <p>Hold the Ctrl key while clicking to select multiple tags (⌘-click on Mac).</p>
-      <Field
-        name="tags"
-        component={renderFieldSelect}
-        type="select-multiple"
-        htmlFor="tags"
-        label="* Tags:"
-        options={tags}
-      />
-      <Field
-        name="rcgpCategory"
-        component={renderFieldSelect}
-        htmlFor="rcgp"
-        label="* Category (RCGP):"
-        options={rcgpCategories}
-      />
-      <Field
-        name="name"
-        component={renderField}
-        type="text"
-        label="* Name of Service: "
-        htmlFor="name"
-      />
-      <Field
-        name="description"
-        component={renderField}
-        type="text"
-        htmlFor="description"
-        label="* Description of Service:"
-      />
-      <Field
-        name="referral"
-        component={renderField}
-        type="text"
-        placeholder="Referral pathway"
-        htmlFor="referral"
-        label="Referral:"
-      />
-      <Field
-        name="address"
-        component={renderField}
-        type="text"
-        htmlFor="address"
-        label="Address:"
-      />
-      <Field
-        name="postcode"
-        component={renderField}
-        type="text"
-        htmlFor="postcode"
-        label="* Postcode:"
-      />
-      <Field
-        name="telephone"
-        component={renderField}
-        type="tel"
-        htmlFor="telephone"
-        label="* Telephone:"
-      />
-      <Field
-        type="email"
-        component={renderField}
-        name="email"
-        placeholder="service@domain.com"
-        htmlFor="email"
-        label="E-mail:"
-      />
-      <Field
-        type="url"
-        component={renderField}
-        name="weblink"
-        placeholder="https://www.servicewebsite.com"
-        htmlFor="weblink"
-        label="Web address:"
-      />
-      <div className={styles.formBtn}>
-        <button type="submit" disabled={pristine || submitting}>
-          Submit
-        </button>
-      </div>
-    </form>
+    <div className={styles['service-form']} >
+      <form
+        method="post"
+        onSubmit={handleSubmit}
+        className={styles['service-form']}
+      >
+        <CloseFormBtn section="services" />
+        <legend>Add a service</legend>
+        <p>* Required</p>
+        <Field
+          name="category"
+          component={renderFieldSelect}
+          htmlFor="category"
+          label="* Category:"
+          options={categories}
+        />
+        <p>Hold the Ctrl key while clicking to select multiple tags (⌘-click on Mac).</p>
+        <Field
+          name="tags"
+          component={renderFieldSelect}
+          type="select-multiple"
+          htmlFor="tags"
+          label="* Tags:"
+          options={tags}
+        />
+        <Field
+          name="rcgpCategory"
+          component={renderFieldSelect}
+          htmlFor="rcgp"
+          label="* Category (RCGP):"
+          options={rcgpCategories}
+        />
+        <Field
+          name="name"
+          component={renderField}
+          type="text"
+          label="* Name of Service: "
+          htmlFor="name"
+        />
+        <Field
+          name="description"
+          component={renderField}
+          type="textarea"
+          htmlFor="description"
+          label="* Description of Service:"
+        />
+        <Field
+          name="referral"
+          component={renderField}
+          type="text"
+          placeholder="Referral pathway"
+          htmlFor="referral"
+          label="Referral:"
+        />
+        <Field
+          name="address"
+          component={renderField}
+          type="text"
+          htmlFor="address"
+          label="Address:"
+        />
+        <Field
+          name="postcode"
+          component={renderField}
+          type="text"
+          htmlFor="postcode"
+          label="* Postcode:"
+        />
+        <Field
+          name="telephone"
+          component={renderField}
+          type="tel"
+          htmlFor="telephone"
+          label="* Telephone:"
+        />
+        <Field
+          type="email"
+          component={renderField}
+          name="email"
+          placeholder="service@domain.com"
+          htmlFor="email"
+          label="E-mail:"
+        />
+        <Field
+          type="url"
+          component={renderField}
+          name="weblink"
+          placeholder="https://www.servicewebsite.com"
+          htmlFor="weblink"
+          label="Web address:"
+        />
+        <div className={styles.formBtn}>
+          <button type="submit" disabled={pristine || submitting}>
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
   );
-};
-
-const afterSubmit = (result, dispatch) => {
-  console.log('after submitted');
-  dispatch(reset('service'));
 };
 
 renderField.propTypes = {
@@ -225,5 +222,4 @@ ServiceForm.defaultProps = {
 
 export default reduxForm({
   form: 'service',
-  onSubmitSuccess: afterSubmit,
 })(ServiceForm);

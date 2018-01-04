@@ -19,10 +19,12 @@ const MenuOverlay = ({
   return (
     <div className={styles[background]}>
       <div className={styles['menu-container']}>
+        {!menuOverlay && <span>Filter by :</span>}
         {!tagMenu && <OptionBtn
           text="Categories"
           image={images.listIcon}
           active={displayCategories}
+          menuOverlay={menuOverlay}
           clickHandler={() => {
             dispatch({
               type: 'TOGGLE_DISPLAY_CATEGORIES',
@@ -33,6 +35,7 @@ const MenuOverlay = ({
           text="Tags"
           image={images.tagIcon}
           active={tagMenu}
+          menuOverlay={menuOverlay}
           clickHandler={() => {
             dispatch({
               type: 'TOGGLE_TAG_MENU',

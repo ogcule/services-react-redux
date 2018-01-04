@@ -3,17 +3,6 @@
 const initalState = {
   formOpen: false,
   hasErrored: false,
-  invalidMsgs: {
-    name: '',
-    description: '',
-    telephone: '',
-    postcode: '',
-    email: '',
-    weblink: '',
-    image: '',
-    tags: '',
-  },
-  hasInvalidMsgs: false,
   hasSubmitted: false,
   loaded: false,
 };
@@ -24,24 +13,13 @@ const formView = (state = initalState, action) => {
       return Object.assign({}, state, {
         formOpen: !state.formOpen,
       });
-    case 'FETCH_INVALID_MESSAGES':
-      return Object.assign({}, state, {
-        invalidMsgs: {
-          ...action.invalidMsgs,
-        },
-        hasInvalidMsgs: action.hasInvalidMsgs,
-      });
     case 'CREATE_SERVICE_SUCCESS':
       return Object.assign({}, state, {
-        hasSubmitted: true,
+        hasSubmitted: action.hasSubmitted,
       });
     case 'CREATE_SERVICE_ERROR':
       return Object.assign({}, state, {
         hasErrored: action.hasErrored,
-      });
-    case 'RESET_INVALID_MESSAGES':
-      return Object.assign({}, state, {
-        hasInvalidMsgs: action.hasInvalidMsgs,
       });
     default:
       return state;

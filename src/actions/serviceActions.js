@@ -1,24 +1,22 @@
-// import { SubmissionError } from 'redux-form';
+import { SubmissionError, reset } from 'redux-form';
 import apiServices from './../api/apiServices';
 import defaultFormValues from './../utils/defaultFormValues';
 import {
-  FETCH_INVALID_MESSAGES,
   CREATE_SERVICE_SUCCESS,
   CREATE_SERVICE_ERROR,
   GET_FILTERED_TAGS_SUCCESS,
   GET_FILTERED_BOTH_SUCCESS,
   GET_FILTERED_CATEGORY_SUCCESS,
   GET_SEARCHED_SERVICES_SUCCESS,
-  RESET_INVALID_MESSAGES,
 } from './actionTypes';
 // action creator
 // concise body syntax, implied "return",
 // with block body, explicit "return" needed AirBnB eslint
 // likes concise body syntax, redux tutorial uses block body.
-export const createServiceSuccess = service => (
+export const createServiceSuccess = bool => (
   {
     type: CREATE_SERVICE_SUCCESS,
-    service,
+    hasSubmitted: bool,
   }
 );
 
@@ -26,14 +24,6 @@ export const createServiceError = bool => (
   {
     type: CREATE_SERVICE_ERROR,
     hasErrored: bool,
-  }
-);
-
-export const fetchInvalidMessages = invalidMsgs => (
-  {
-    type: FETCH_INVALID_MESSAGES,
-    invalidMsgs,
-    hasInvalidMsgs: true,
   }
 );
 
@@ -88,12 +78,6 @@ export const getSearchedServicesSuccess = data => (
   }
 );
 
-export function resetInvalidMessages(bool) {
-  return {
-    type: RESET_INVALID_MESSAGES,
-    hasInvalidMsgs: bool,
-  };
-}
 // Async action, a function that returns a
 // dispatcher function that dipatches an ation
 // at a later time.
@@ -105,45 +89,26 @@ export const getFilteredBoth = (category, tags) => (
       .catch(err => console.log(err.message))
 );
 
-// export const createService = values => (
-//   dispatch =>
-//     apiServices.requestPost(...defaultFormValues(values))
-//       .then((data) => {
-//         console.log('Response data from submit call in ServicesContainer', data);
-//         /* data from requstPost is either an error message(object)
-//         or returned id number if successful */
-//         if (typeof data !== 'number') {
-//           // dispatch(fetchInvalidMessages(data));
-//           throw new SubmissionError(data);
-//         }
-//       })
-//       .catch((error) => {
-//         console.log(error.message);
-//         dispatch(createServiceError(true));
-//       })
-// );
-
 export const createService = values => (
   dispatch =>
     apiServices.requestPost(...defaultFormValues(values))
       .then((data) => {
-        console.log('Response data from submit call in ServicesContainer', data);
-        /* data from requstPost is either an error message(object)
-        or returned id number if successful */
-        // if (typeof data !== 'number') {
-        //   // dispatch(fetchInvalidMessages(data));
-        //   console.log('throw error');
-        //   throw new SubmissionError(data);
-        // }
+        console.log('Response data from submit call in ServicesContainer', data.data);
+        if (typeof data.data === 'number') {
+          console.log('if statement');
+          dispatch(createServiceSuccess(true));
+          dispatch(reset('service'));
+          setTimeout(() => dispatch(createServiceSuccess(false)), 3000);
+        }
       })
       .catch((error) => {
-        console.log('error from submit call in ServicesContainer', error.response.data.error);
-        // if (typeof error !== 'number') {
-        //   // dispatch(fetchInvalidMessages(data));
-        //   console.log('throw error');
-        //   throw new SubmissionError(data);
-        // }
-        dispatch(createServiceError(true));
+        if (error.response.data.validationErrors) {
+          console.log('error from submit call in ServicesContainer', error.response.data.validationErrors);
+          throw new SubmissionError(error.response.data.validationErrors);
+        } else {
+          dispatch(createServiceError(true));
+          setTimeout(() => dispatch(createServiceError(false)), 3000);
+        }
       })
 );
 

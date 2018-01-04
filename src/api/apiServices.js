@@ -61,15 +61,5 @@ export default {
         // property shorthand
       }),
     });
-    // .then(response => response.data)
-    // .catch((error) => {
-    //   const errorMsgs = {};
-    //   Object.keys(error.response.data.error).map((val) => {
-    //     errorMsgs[val] = error.response.data.error[val].msg;
-    //     return errorMsgs;
-    //   });
-    //   console.log(errorMsgs);
-    //   return errorMsgs;
-    // });
   },
 };

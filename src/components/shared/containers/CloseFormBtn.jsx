@@ -15,12 +15,21 @@ CloseFormBtn.defaultProps = {
   closeForm: null,
 };
 
-const mapDispatchToProps = dispatch => (
-  {
-    closeForm: () => dispatch({
-      type: 'TOGGLE_FORM',
-    }),
+// if statement so can toggle different forms with statement
+// component
+const mapDispatchToProps = (dispatch, ownProps) => {
+  if (ownProps.section === 'services') {
+    return {
+      closeForm: () => dispatch({
+        type: 'TOGGLE_FORM',
+      }),
+    };
   }
-);
+  return {
+    closeForm: () => dispatch({
+      type: 'TOGGLE_FAQ_FORM',
+    }),
+  };
+};
 
 export default connect(null, mapDispatchToProps)(CloseFormBtn);

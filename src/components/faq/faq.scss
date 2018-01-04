@@ -3,18 +3,28 @@
 @import '../../styles/fonts';
 @import '../../styles/container';
 
-.faqBox {
+.outer-container {
+  background: $transparent;
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.faq-box {
   @extend %outer-box;
 }
 
 .transparent-bg {
   @include transparent-bg(60px);
 }
-.faqBtnContainer {
+.faq-btn-container {
   width: 80%;
   height: 35px;
 }
-.formContainerFaq {
+.form-container-faq {
   @extend %formContainer;
   width: 80%;
   margin: 5% auto 0 auto;
@@ -38,7 +48,7 @@ li.message {
   border-radius: 5px;
   margin-bottom: 5px;
 }
-.formRow {
+.form-row {
   display: flex;
   margin: 1em;
   label {
@@ -48,13 +58,18 @@ li.message {
     padding-bottom: 5px;
     font-size: 1.2em;
   }
-  input,textarea {
+  input, textarea {
     display: block;
     flex: 1;
     font-size: 1em;
     padding: 5px;
   }
+
+  span {
+    color: $red;
+    font-size: 1em;
   }
+}
 ul{
   margin: 0;
   padding: 0;
@@ -95,10 +110,10 @@ ul{
 @media only screen
   and (max-width: 667px)
   and (orientation: portrait) {
-    .faqBtnContainer {
+    .faq-btn-container {
       width: 100%;
     }
-    .formContainerFaq {
+    .form-container-faq {
       width:100%;
     }
   }

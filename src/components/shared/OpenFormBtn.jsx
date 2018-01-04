@@ -1,19 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { func, string } from 'prop-types';
 import styles from './styles/openFormBtn.scss';
 
-const OpenFormBtn = ({ openForm }) => (
+const OpenFormBtn = ({ openForm, text }) => (
   <div className={styles['add-btn']}>
-    Add service
+    {text}
     <button onClick={openForm} />
   </div>
 );
 
 OpenFormBtn.propTypes = {
-  openForm: PropTypes.func,
+  openForm: func,
+  text: string,
 };
 OpenFormBtn.defaultProps = {
   openForm: null,
+  text: '',
 };
 
 export default OpenFormBtn;

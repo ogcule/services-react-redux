@@ -15,16 +15,19 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  color: red;
+  color: $red;
 }
 .errorText {
-  color: red;
-  padding: 0;
+  background-color: $red;
+  border-radius: 5px;
+  color: $white;
+  padding: 5px;
   margin: 0;
+  text-align: center;
 }
 .successMsg{
   padding: 5px;
-  background-color: $yellow;
+  background-color: $blue;
   color: $white;
   border-radius: 5px;
   text-align: center;
