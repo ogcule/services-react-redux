@@ -21,10 +21,10 @@ const Service = (props) => {
     referral,
   } = props.serviceInfo;
   return (
-    <div key={id} data-id={id} className={styles.serviceContainer}>
-      <div className={styles.serviceInfo}>
+    <div key={id} data-id={id} className={styles['service-container']}>
+      <div className={styles['service-info']}>
         <ul className={styles.service}>
-          <li className={styles.serviceHeading}>
+          <li className={styles['service-heading']}>
             <img src={image} alt={name} />
             <h3>{name}</h3>
           </li>
@@ -33,13 +33,13 @@ const Service = (props) => {
           </li>
           <li><span>Category:</span>{category}</li>
           <li><span>RCGP Curriculum:</span>{rcgp}</li>
-          <ul className={styles.outerTagsContainer}>
+          <ul className={styles['outer-tags-container']}>
             {tags.map(tag => <Tag key={tag} tag={tag} />)}
           </ul>
         </ul>
       </div>
-      <div className={styles.serviceContact}>
-        <ul className={styles.contactDetails}>
+      <div className={styles['service-contact']}>
+        <ul className={styles['contact-details']}>
           <li><h3>Contact details</h3></li>
           <li><span>Address:</span>{address}</li>
           <li><span>Postcode:</span>{postcode}</li>

@@ -9,20 +9,21 @@ ul {
   list-style-type: none;
 }
 
-.serviceContainer {
+.service-container {
   display: flex;
   width: 100%;
   height: 100%;
   border: solid 1px $base;
   margin-bottom: 5px;
 }
-.serviceInfo {
+
+.service-info {
   flex:1;
   display: flex;
   border-right: solid 1px $base;
   padding: 0.5em;
 }
-.serviceContact{
+.service-contact{
   flex:1;
   height: 100%;
   padding: 0.5em;
@@ -51,7 +52,7 @@ p.required, span.required {
   flex-flow: row wrap;
   justify-content:space-around;
 }
-.serviceHeading {
+.service-heading {
   @extend .liFlex;
   background-color: lighten($base, 40%);
   border-radius: 5px;
@@ -64,7 +65,7 @@ p.required, span.required {
   color: darken($base, 10%);
 }
 }
-.contactDetails {
+.contact-details {
   li {
     padding: 5px;
     color: black;
@@ -80,3 +81,16 @@ p.required, span.required {
 .centerText{
   text-align: center;
 }
+
+@media only screen
+and (max-width: 667px)
+and (orientation: portrait) {
+  .service-container {
+    display: flex;
+    flex-flow: column;
+  }
+
+  .service-info {
+    border-bottom: solid 1px $base;
+  }
+  }

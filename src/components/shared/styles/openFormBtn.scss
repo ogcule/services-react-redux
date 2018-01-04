@@ -9,6 +9,11 @@
   padding-right: 5px;
   text-align: right;
 
+  span {
+    margin: 0;
+    padding: 0;
+  }
+
   button {
     @include reset-button(1.5em);
     background: center no-repeat;
@@ -20,3 +25,13 @@
     width: 24px;
   }
 }
+
+@media only screen
+and (max-width: 667px)
+and (orientation: portrait) {
+  .add-btn {
+    span {
+      display: none;
+      }
+    }
+  }

@@ -4,7 +4,7 @@ import styles from './styles/openFormBtn.scss';
 
 const OpenFormBtn = ({ openForm, text }) => (
   <div className={styles['add-btn']}>
-    {text}
+    <span>{text}</span>
     <button onClick={openForm} />
   </div>
 );

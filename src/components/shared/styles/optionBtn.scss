@@ -29,25 +29,12 @@ img {
 }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    visibility: hidden;
+@media only screen
+and (max-width: 667px)
+and (orientation: portrait) {
+  .btn-div {
+    p {
+      display: none;
+      }
     }
-
-  to {
-    opacity: 1;
-    visibility: visible;
-}
-}
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-    visibility: visible;
-    }
-
-  to {
-    opacity: 0;
-    visibility: hidden;
-}
-}
+  }

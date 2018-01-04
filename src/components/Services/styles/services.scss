@@ -67,20 +67,25 @@ a{
   }
 }
 // Tags
-.outerTagsContainer {
+.outer-tags-container {
   display: flex;
   flex-flow: row wrap;
-  justify-content:flex-start;
+  justify-content: flex-start;
 }
-.tagContainer {
+
+.tag-container {
   margin-bottom: 5px;
   position: relative;
+  z-index: -1; // moved to here from svg
+  // when on svg then tag content was over
+  // the top fixed containers
 }
+
 svg {
   position: absolute;
-  z-index: -1;
+  // z-index: -1;
 }
-.tagContent {
+.tag-content {
   position: relative;
   word-break: break-all;
   width: 100px;

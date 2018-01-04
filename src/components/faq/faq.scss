@@ -100,12 +100,18 @@ ul{
 }
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
 @media only screen
-  and (max-width: 667px)
-  and (orientation: portrait) {
-    .faq-btn-container {
-      width: 100%;
-    }
-    .form-container-faq {
-      width:100%;
-    }
+and (max-width: 667px)
+and (orientation: portrait) {
+
+  .faq-btn-container {
+    width: 100%;
+  }
+
+  .form-container-faq {
+    width:100%;
+  }
+
+  .questions {
+    width: 100%;
+  }
   }

@@ -110,7 +110,7 @@ const ServiceForm = (props) => {
           name="name"
           component={renderField}
           type="text"
-          label="* Name of Service: "
+          label="* Name: "
           htmlFor="name"
         />
         <Field
@@ -118,7 +118,7 @@ const ServiceForm = (props) => {
           component={renderField}
           type="textarea"
           htmlFor="description"
-          label="* Description of Service:"
+          label="* Description:"
         />
         <Field
           name="referral"
