@@ -43,7 +43,7 @@ export const createFaq = values => (
     apiFaq.requestPost(values)
       .then((data) => {
         console.log('Response data from submit call for FAQ', data.data);
-        if (typeof data.data === 'number') {
+        if (typeof data.data.id === 'number') {
           console.log('if statement in FAQ');
           dispatch(createFAQSuccess(true));
           dispatch(reset('FAQ'));
@@ -55,6 +55,7 @@ export const createFaq = values => (
           console.log('error from submit call in FAQ Container', error.response.data.validationErrors);
           throw new SubmissionError(error.response.data.validationErrors);
         } else {
+          console.log('other error', error);
           dispatch(createFAQError(true));
           setTimeout(() => dispatch(createFAQError(false)), 3000);
         }

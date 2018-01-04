@@ -1,28 +1,26 @@
 import React from 'react';
-import { bool, func } from 'prop-types';
+import { bool } from 'prop-types';
 import styles from './faq.scss';
 import QuestionsContainer from './containers/QuestionsContainer';
-import Form from './containers/Form';
+import FormOuterContainer from './containers/FormOuterContainer';
 import Subtitle from './../shared/Subtitle';
 import OpenFormBtnFAQContainer from './containers/OpenFormBtnFAQContainer';
 
-const FaqPage = ({ formOpen, submit }) => (
+const FaqPage = ({ formOpenFAQ }) => (
   <div className={styles['faq-box']}>
     <Subtitle subtitle="Frequently asked questions" />
     <div className={styles['faq-btn-container']}>
       <OpenFormBtnFAQContainer text="Add Question" />
     </div>
-    {formOpen ? <Form onSubmit={submit} /> : <QuestionsContainer />}
+    {formOpenFAQ ? <FormOuterContainer /> : <QuestionsContainer />}
   </div>
 );
 
 FaqPage.propTypes = {
-  formOpen: bool,
-  submit: func,
+  formOpenFAQ: bool,
 };
 FaqPage.defaultProps = {
-  formOpen: false,
-  submit: null,
+  formOpenFAQ: false,
 };
 
 export default FaqPage;
