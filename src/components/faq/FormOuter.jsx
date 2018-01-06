@@ -1,7 +1,7 @@
 import React from 'react';
 import { bool } from 'prop-types';
 import styles from './faq.scss';
-import CloseFormBtn from './../shared/containers/CloseFormBtn';
+import CloseFormBtnContainer from './../shared/containers/CloseFormBtnContainer';
 import ErrorMsg from './../shared/ErrorMsg';
 import SuccessMessage from './../shared/SuccessMessage';
 import Form from './containers/Form';
@@ -9,7 +9,7 @@ import Form from './containers/Form';
 const FormOuter = ({ hasSubmittedFAQ, hasErroredFAQ }) => (
   <div className={styles['outer-container']}>
     <div className={styles['form-container-faq']}>
-      <CloseFormBtn section="faq" />
+      <CloseFormBtnContainer section="faq" />
       {hasSubmittedFAQ && <SuccessMessage /> }
       {hasErroredFAQ && <ErrorMsg msg="Error, please try again" />}
       <Form />

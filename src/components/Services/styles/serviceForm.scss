@@ -6,53 +6,73 @@
 
 // formBtn is imported from buttons
 .service-form {
+  background-color: lighten($brown, 30%);
+  border: $brown solid 2px;
+  border-radius: 5px;
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+
   form {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between;
     align-items: flex-end;
-    border-radius: 5px;
-    border: $brown solid 2px;
     background-color: lighten($brown, 30%);
+    border: 0;
     color: darken($brown, 20%);
-    padding: 5px;
-    width: 100%;
+    display: flex;
+    flex-flow: column;
     height: 100%;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 5px;
+    width: 80%;
+
     ul {
-     list-style-type: none;
-     width: 100%;
+      list-style-type: none;
+      width: 100%;
     }
   }
+
   legend {
-  align-self: center;
-  text-align: center;
-  font-size: 1.4em;
-  font-weight: 600;
-  margin-bottom: 5px;
+    align-self: center;
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-bottom: 5px;
+    text-align: center;
   }
+
   p {
-    float:right;
+    float: right;
   }
 }
 
 .service-input {
+  flex: 1;
   width: 100%;
+
   label {
-    width: 100%;
     display: flex;
     justify-content: flex-end;
-    margin: 0.2rem 0;
+    margin: .2rem 0;
+    width: 100%;
     }
-    input, textarea, select, label {
-      font-size: 1.0em;
-      font-family: $text;
+
+  input,
+  textarea,
+  select,
+  label {
+    font-family: $text;
+    font-size: 1em;
     }
-    input, textarea, select {
-      width: 50%;
-      margin-left: 1rem;
+
+  input,
+  textarea,
+  select {
+    margin-left: 1rem;
+    width: 50%;
     }
-    span {
-      color: $red;
-      float: right;
+
+  span {
+    color: $red;
+    float: right;
     }
    }

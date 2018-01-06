@@ -2,21 +2,25 @@
 @import '../../../styles/fonts';
 @import '../../../styles/buttons';
 
-.closebtn {
-  flex: 0 1 auto;
+.close-btn {
   display: flex;
   justify-content: flex-end;
+  padding: 0 2%;
+  width: 100%;
+
   button {
-  @include reset-button(1.5em);
+    @include reset-button(1.5em);
 }
 }
-.notFound{
+
+.notFound {
+  align-items: center;
+  color: $red;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  align-items: center;
-  color: $red;
 }
+
 .errorText {
   background-color: $red;
   border-radius: 5px;

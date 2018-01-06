@@ -7,7 +7,7 @@ import {
   string,
   arrayOf,
 } from 'prop-types';
-import CloseFormBtn from './../../shared/containers/CloseFormBtn';
+import CloseFormBtnContainer from './../../shared/containers/CloseFormBtnContainer';
 import styles from './../styles/serviceForm.scss';
 import { tags, categories, rcgpCategories } from './../../../data/categories';
 
@@ -75,12 +75,12 @@ const ServiceForm = (props) => {
 
   return (
     <div className={styles['service-form']} >
+      <CloseFormBtnContainer section="services" />
       <form
         method="post"
         onSubmit={handleSubmit}
         className={styles['service-form']}
       >
-        <CloseFormBtn section="services" />
         <legend>Add a service</legend>
         <p>* Required</p>
         <Field

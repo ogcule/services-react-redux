@@ -7,12 +7,16 @@ import Subtitle from './../shared/Subtitle';
 import OpenFormBtnFAQContainer from './containers/OpenFormBtnFAQContainer';
 
 const FaqPage = ({ formOpenFAQ }) => (
-  <div className={styles['faq-box']}>
-    <Subtitle subtitle="Frequently asked questions" />
-    <div className={styles['faq-btn-container']}>
-      <OpenFormBtnFAQContainer text="Add Question" />
+  <div className={styles['simple-container']}>
+    {!formOpenFAQ &&
+      <div className={styles['fixed-header']}>
+        <Subtitle subtitle="Frequently asked questions" />
+        <OpenFormBtnFAQContainer text="Add Question" />
+      </div>
+    }
+    <div className={styles['faq-box']}>
+      {formOpenFAQ ? <FormOuterContainer /> : <QuestionsContainer />}
     </div>
-    {formOpenFAQ ? <FormOuterContainer /> : <QuestionsContainer />}
   </div>
 );
 

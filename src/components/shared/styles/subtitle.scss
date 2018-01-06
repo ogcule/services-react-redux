@@ -1,23 +1,22 @@
-@import "../../../styles/colors";
-@import "../../../styles/buttons";
-@import "../../../styles/fonts";
-@import "../../../styles/container";
-@import "../../../styles/keyframes";
+@import '../../../styles/colors';
+@import '../../../styles/buttons';
+@import '../../../styles/fonts';
+@import '../../../styles/container';
+@import '../../../styles/keyframes';
 
-h2 {
-  margin: 0;
-  padding: 0;
-}
 .subtitle {
-  font-size: 1.2em;
+  font-size: 1.4em;
   font-weight: 900;
   margin: 0;
   padding: 0;
+  text-align: center;
+  width: 100%;
 }
+
 @media only screen
-  and (max-width: 667px)
-  and (orientation: portrait) {
-    .subtitle {
-      font-size: 1em;
-    }
+and (max-width: 667px)
+and (orientation: portrait) {
+  .subtitle {
+    font-size: 1.2em;
+  }
 }
