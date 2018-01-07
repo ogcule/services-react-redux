@@ -9,7 +9,7 @@ const categories = [
   'Opticians',
   'Pharmacies',
   'Safeguarding',
-  'Urgent and Emergency Care',
+  'Urgent Care',
 ];
 const rcgpCurriculum = [
   { 1: 'Healthy People' },
