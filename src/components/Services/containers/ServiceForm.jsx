@@ -75,12 +75,12 @@ const ServiceForm = (props) => {
 
   return (
     <div className={styles['service-form']} >
-      <CloseFormBtnContainer section="services" />
       <form
         method="post"
         onSubmit={handleSubmit}
         className={styles['service-form']}
       >
+        <CloseFormBtnContainer section="services" />
         <legend>Add a service</legend>
         <p>* Required</p>
         <Field
@@ -103,7 +103,7 @@ const ServiceForm = (props) => {
           name="rcgpCategory"
           component={renderFieldSelect}
           htmlFor="rcgp"
-          label="* Category (RCGP):"
+          label="* RCGP:"
           options={rcgpCategories}
         />
         <Field
@@ -165,7 +165,7 @@ const ServiceForm = (props) => {
           htmlFor="weblink"
           label="Web address:"
         />
-        <div className={styles.formBtn}>
+        <div className={styles['form-service-btn']}>
           <button type="submit" disabled={pristine || submitting}>
             Submit
           </button>

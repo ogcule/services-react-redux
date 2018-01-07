@@ -126,6 +126,9 @@ ul {
   }
 }
 
+.form-faq-btn {
+  @extend %form-btn;
+}
 // iPhone 6, 6S, 7 and 8
 @media only screen
 and (max-width: 667px)

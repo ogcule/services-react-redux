@@ -54,7 +54,7 @@ const Form = (props) => {
         htmlFor="question"
       />
       {error && <strong>{error}</strong>}
-      <div className={styles['form-btn']}>
+      <div className={styles['form-faq-btn']}>
         <button type="submit" disabled={pristine || submitting}>Submit</button>
       </div>
     </form>
